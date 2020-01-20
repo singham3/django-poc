@@ -1,0 +1,122 @@
+{% load i18n %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{% trans "AdminLTE 3 | Forget Password" %}</title>
+  {% if ificon.MAIN_FAVICON %}
+  <link href="{{ ificon.MAIN_FAVICON.config_value_file.url }}" rel="icon" type="image/x-icon" />
+  {% else %}
+    <link href="{% static 'dist/img/AdminLTELogo.png' %}" rel="icon" type="image/x-icon" />
+  {% endif %}
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' %}">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+ <script language=javascript>
+      if((window.history.forward(1) != null)
+      {
+              window.location.reload();
+       }
+</script>
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+
+
+  <div class="login-logo">
+    {% if ificon.MAIN_LOGO %}
+    <img src="{{ificon.MAIN_LOGO.config_value_file.url}}" alt="{% trans 'Admin LTE' %}" class="rounded" style="width: 100px;">
+    {% else %}
+    <b>{% trans "Admin LTE" %}</b><br>
+    {% endif %}
+  </div>
+  {% if form.non_field_errors %}
+<!--        <div class="card-body">-->
+                <div class="alert alert-danger alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> {% trans "Alert!" %}</h5>
+                  {{ form.non_field_errors }}
+                </div>
+
+      {% elif form.errors %}
+<!--        <div class="card-body">-->
+                <div class="alert alert-danger alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> {% trans "Alert!" %}</h5>
+                  {{ form.errors }}
+                </div>
+    {% elif error %}
+<!--        <div class="card-body">-->
+                <div class="alert alert-danger alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> {% trans "}Alert!" %</h5>
+                  {{ error }}
+                </div>
+    {% elif msg %}
+                <div class="alert alert-success alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-check"></i> {% trans "Alert!" %}</h5>
+                  {{msg}}
+                </div>
+        {% endif %}
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+        <p class="login-box-msg">{% trans "Forgot Password ?" %}<br><small>{% trans "Enter your e-mail address below to reset your password." %}</small></p>
+
+
+      <form action="#" method="post">
+         {% csrf_token %}
+
+        <div class="input-group mb-3">
+          <input type="password" required name="password" class="form-control" placeholder="{% trans 'Password' %}">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+          <div class="input-group mb-3">
+          <input type="password" required name="confirm_password" class="form-control" placeholder="{% trans 'Confirm Password' %}">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- /.col -->
+            <div class="col-12">
+                    <button type="submit" class="btn btn-primary float-right">{% trans "Submit" %}</button>
+          </div>
+
+          <!-- /.col -->
+        </div>
+      </form>
+
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+</html>

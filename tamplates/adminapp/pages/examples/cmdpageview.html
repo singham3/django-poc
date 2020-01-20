@@ -1,0 +1,134 @@
+
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block styles %}
+
+<link rel="stylesheet" href="{% static 'plugins/summernote/summernote-bs4.css' %}">
+
+{%endblock%}
+
+{% block scripts %}
+
+<script src="{% static 'plugins/summernote/summernote-bs4.min.js' %}"></script>
+
+
+
+{% endblock %}
+
+{% block content %}
+
+
+{% csrf_token %}
+
+
+
+<div class="content-wrapper" style="min-height: 319px;">
+    {% if error %}
+<!--        <div class="card-body">-->
+                <div class="alert alert-danger alert-dismissible" style="width: 955px;margin: 5px 0px 0px 19px;">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> {% trans "Alert!" %}</h5>
+                  {{ error }}
+                </div>
+    {% endif %}
+
+<section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+              <h1>{% trans "Manage Page" %} <h6>{% trans "Page Detail" %}</h6></h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/dashboard/" class="text-secondary">{% trans "Home" %}</a></li>
+                <li class="breadcrumb-item"><a href="/cms-manager/pages/" class="text-secondary">{% trans "Pages" %}</a></li>
+              <li class="breadcrumb-item active">{% trans "View Page" %}</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="content" data-table="users">
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col-md-12">
+        <div class="card card-primary card-outline">
+        <div class="card-header">
+            <h3 class="card-title" style="display:inline-block;">{% trans "CMS Page Detail" %}</h3>
+            <a href="/cms-manager/pages/" class="btn btn-default float-right" title="Back" style="display:inline-block;"><i class="fa fa-fw fa-chevron-circle-left"></i> {% trans "Back" %}</a></div>
+        <div class="box-body">
+            {% if cmsdata %}
+            <table class="table table-hover table-striped">
+                <tbody>
+                <tr>
+                    <th scope="row">{% trans "Title" %}</th>
+                    <td>{{cmsdata.title}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "Sub Title" %}</th>
+                    <td>{{cmsdata.sub_title}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "Slug" %}</th>
+                    <td>{{cmsdata.slug}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "Short Description" %}</th>
+                    <td>{{cmsdata.short_description}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "Meta Title" %}</th>
+                    <td>{{cmsdata.meta_title}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "Meta Keyword" %}</th>
+                    <td>{{cmsdata.meta_keyword}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "Meta Description" %}</th>
+                    <td>{{cmsdata.meta_description}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "Created" %}</th>
+                    <td>{{cmsdata.createdate | date:'m/d/Y P'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "Modified" %}</th>
+                    <td>{{cmsdata.updatedate | date:'m/d/Y P'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "Image" %}</th>
+                    <td> <img src="{{cmsdata.cmsfile.url}}" id="logo_responce" class="img-thumbnail" alt="Image" style="max-height:100px">
+                        <a href="/cms-manager/pages/view/image/{{cmsdata.id}}/" class="btn btn-primary pull-right"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                </tr>
+
+
+                {% if cmsdata.userid.is_active == 1 or cmsdata.userid.is_active == True %}
+                <tr>
+                    <th scope="row">{% trans "Status" %}</th>
+                    <td>{% trans "YES" %}</td>
+                </tr>
+                {% elif  cmsdata.userid.is_active == 0 or cmsdata.userid.is_active == False%}
+                <tr>
+                    <th scope="row">{% trans "Status" %}</th>
+                    <td>{% trans "NO" %}</td>
+                </tr>
+                {% endif %}
+                <tr>
+                    <th scope="row">{% trans "Description" %}</th>
+                    <td>{{cmsdata.html_description | safe}}</td>
+                </tr>
+            </tbody></table>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+        </div></div></div>
+</section>
+            </div>
+
+{% endblock %}

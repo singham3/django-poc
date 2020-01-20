@@ -1,0 +1,45 @@
+{% load staticfiles %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>{% trans "AdminLTE" %}</title>
+  {% if ificon.MAIN_FAVICON %}
+  <link href={{ificon.MAIN_FAVICON.config_value_file.url}} rel="icon" type="image/x-icon" />
+  {% else %}
+    <link href="{% static 'dist/img/AdminLTELogo.png' %}" rel="icon" type="image/x-icon" />
+  {% endif %}
+   <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"/>
+      {% block styles %}{% endblock %}
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
+
+</head>
+
+<body class="sidebar-mini layout-fixed">
+
+{% include  "header.html" %}
+{% block content %}{% endblock %}
+{% include  "footer.html" %}
+
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'plugins/jquery-ui/jquery-ui.min.js' %}"></script>
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+{% block scripts %}{% endblock %}
+<script src="{% static 'plugins/fastclick/fastclick.js' %}"></script>
+<script src="{% static 'dist/js/adminlte.js' %}"></script>
+<script src="{% static 'dist/js/pages/dashboard.js' %}"></script>
+<!--<script src="{% static 'dist/js/adminlte.min.js' %}"></script>-->
+<script src="{% static 'dist/js/demo.js' %}"></script>
+</body>
+</html>

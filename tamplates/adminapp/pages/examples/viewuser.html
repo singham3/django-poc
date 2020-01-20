@@ -1,0 +1,113 @@
+
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block styles %}
+
+{%endblock%}
+
+{% block scripts %}
+
+{% endblock %}
+
+{% block content %}
+
+
+{% csrf_token %}
+
+
+
+<div class="content-wrapper" style="min-height: 319px;">
+
+<section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>{% trans "User Detail" %}</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/dashboard/" class="text-secondary">{% trans "Home" %}</a></li>
+                <li class="breadcrumb-item"><a href="/users/pages/" class="text-secondary">{% trans "Admin user" %}</a></li>
+              <li class="breadcrumb-item active">{% trans "View User" %}</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="content" data-table="users">
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col-md-12">
+        <div class="card card-primary card-outline">
+        <div class="card-header">
+            <h3 class="card-title" style="display:inline-block;">{% trans "User Detail" %}</h3>
+            <a href="/users/pages/" class="btn btn-default float-right" title="Back" style="display:inline-block;"><i class="fa fa-fw fa-chevron-circle-left"></i> {% trans "Back" %}</a></div>
+        <div class="box-body">
+            {% if user_data %}
+            <table class="table table-hover table-striped">
+                <tbody>
+                <tr>
+                    <th scope="row">{% trans "Username" %}</th>
+                    <td>{{user_data.username}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "First Name" %}</th>
+                    <td>{{user_data.first_name}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "Last Name" %}</th>
+                    <td>{{user_data.last_name}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "Account Id" %}</th>
+                    <td>{{user_data.account_id}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "Mobile" %}</th>
+                    <td>{{user_data.mobile}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "Email" %}</th>
+                    <td>{{user_data.email}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "Dob" %}</th>
+                    <td>{{user_data.dateofbirth | date:'m/d/Y'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "Created" %}</th>
+                    <td>{{user_data.date_joined | date:'m/d/Y P'}}</td>
+                </tr>
+
+                <tr>
+                    <th scope="row">{% trans "Profile Image" %}</th>
+                    <td> <img src={{user_data.userimg.url}} id="logo_responce" class="img-thumbnail" alt="Image" style="max-height:100px"></td>
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "Modified" %}</th>
+                    <td>{{user_data.updatedat | date:'m/d/Y P'}}</td>
+                </tr>
+
+                {% if user_data.is_active == 1 or user_data.is_active == True %}
+                <tr>
+                    <th scope="row">{% trans "Is Verified" %}</th>
+                    <td>{% trans "YES" %}</td>
+                </tr>
+                {% elif  user_data.status == 0 or user_data.is_active == False%}
+                <tr>
+                    <th scope="row">{% trans "Is Verified" %}</th>
+                    <td>{% trans "NO" %}</td>
+                </tr>
+                {% endif %}
+            </tbody></table>{% endif %}
+
+        </div>
+
+    </div>
+        </div></div></div>
+</section>
+            </div>
+
+{% endblock %}

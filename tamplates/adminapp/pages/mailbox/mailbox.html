@@ -1,0 +1,258 @@
+
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %} ">
+<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css" rel="stylesheet">
+{% endblock %}
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"></script>
+<script>
+  $(function () {
+    //Enable check and uncheck all functionality
+    $('.checkbox-toggle').click(function () {
+      var clicks = $(this).data('clicks')
+      if (clicks) {
+        //Uncheck all checkboxes
+        $('.mailbox-messages input[type=\'checkbox\']').prop('checked', false)
+        $('.checkbox-toggle .far.fa-check-square').removeClass('fa-check-square').addClass('fa-square')
+      } else {
+        //Check all checkboxes
+        $('.mailbox-messages input[type=\'checkbox\']').prop('checked', true)
+        $('.checkbox-toggle .far.fa-square').removeClass('fa-square').addClass('fa-check-square')
+      }
+      $(this).data('clicks', !clicks)
+    })
+
+    //Handle starring for glyphicon and font awesome
+    $('.mailbox-star').click(function (e) {
+      e.preventDefault()
+      //detect type
+      var $this = $(this).find('a > i')
+      var glyph = $this.hasClass('glyphicon')
+      var fa    = $this.hasClass('fa')
+
+      //Switch states
+      if (glyph) {
+        $this.toggleClass('glyphicon-star')
+        $this.toggleClass('glyphicon-star-empty')
+      }
+
+      if (fa) {
+        $this.toggleClass('fa-star')
+        $this.toggleClass('fa-star-o')
+      }
+    })
+  })
+</script>
+<script src="{% static 'dist/js/demo.js' %}"></script>
+
+{% endblock %}
+
+{% block content %}
+{% csrf_token %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+      {% if form.non_field_errors %}
+<!--        <div class="card-body">-->
+                <div class="alert alert-danger alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> {% trans "Alert!" %}</h5>
+                  {{ form.non_field_errors }}
+                </div>
+
+      {% elif form.errors %}
+<!--        <div class="card-body">-->
+                <div class="alert alert-danger alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> {% trans "Alert!" %}</h5>
+                  {{ form.errors }}
+                </div>
+
+      {% elif error %}
+    <!--        <div class="card-body">-->
+            <div class="alert alert-danger alert-dismissible col-md-12">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <h5><i class="icon fas fa-ban"></i> {% trans "Alert!" %}</h5>
+              {{ error }}
+            </div>
+      {% elif msg %}
+
+            <div class="alert alert-success alert-dismissible col-md-12">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <h5><i class="icon fas fa-check"></i> {% trans "Alert!" %}</h5>
+              {{msg}}
+            </div>
+
+      {% endif %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>{% trans "Manage Email Hook" %} <h6>{% trans "Here you can manage the email hooks" %}</h6></h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/dashboard/" class="text-secondary">{% trans "Home" %}</a></li>
+              <li class="breadcrumb-item active">{% trans "Email hooks" %}</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+              <h3 class="card-title">{% trans "List Email Hooks" %}</h3>
+
+              <div class="card-tools">
+                <div class="input-group input-group-sm">
+                  <div class="float-right" style="display:inline-block">
+                          <a href="/email-manager/email-hooks/add/"><button type="button" class="btn btn-success">{% trans "+ New Email Hook" %}</button></a>
+                        </div>
+                </div>
+              </div>
+              <!-- /.card-tools -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div class="tab-content">
+            <div class="card-body p-0">
+
+              <div class="tab-pane" id="timeline">
+
+                    <!-- The timeline -->
+
+                    <ul class="timeline timeline-inverse">
+                      <!-- timeline time label -->
+                        {% for i in allemailhook %}
+                      <li class="time-label">
+                        <span class="bg-primary">
+                          {{i.createdat|date:"D d M Y"}}
+                        </span>
+                      </li>
+                      <!-- /.timeline-label -->
+                      <!-- timeline item -->
+                      <li>
+                        <i class="fa fa-anchor bg-primary"></i>
+
+                        <div class="timeline-item">
+                          <span class="time"><i class="far fa-clock"></i> {{i.createdat|time:"h:i"}}</span>
+
+                          <h3 class="timeline-header"><a href="/email-manager/email-hooks/view/{{i.id}}/">{{i.title}}</a></h3>
+
+                          <div class="timeline-body">
+                            {{i.description}}
+                          </div>
+                          <div class="timeline-footer">
+                            <input type="checkbox" checked data-toggle="toggle" data-size="sm">
+                            <a href="/email-manager/email-hooks/view/{{i.id}}/"  class="btn btn-default btn-sm" data-toggle="tooltip" alt="View hook" title="" data-original-title="View hook"><i class="fa fa-eye"></i></a>
+
+                            <a href="/email-manager/email-hooks/edit/{{i.id}}/"  class="btn btn-primary btn-sm" data-toggle="tooltip" alt="Read hook" title="" data-original-title="Read hook"><i class="fa fa-edit"></i></a>
+
+                            <a href="/email-manager/email-hooks/delete/{{i.id}}/"  class="btn btn-danger btn-sm" data-toggle="tooltip" alt="Delete hook" title="" data-original-title="Delete hook"><i class="fa fa-trash"></i></a>
+                          </div>
+                        </div>
+                      </li>
+                        {% endfor %}
+
+                      <li>
+                        <i class="far fa-clock bg-gray"></i>
+                      </li>
+                    </ul>
+
+                  </div>
+            </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+
+          </div>
+          <!-- /.card -->
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                  {% if allemailhook.has_previous %}
+                  <li class="page-item"><a class="page-link" href="/email-manager/email-hooks/{{ allemailhook.previous_page_number }}/">Previous</a></li>
+                  {% else %}
+                  <li class="page-item" ><a class="page-link">Previous</a></li>
+                  {% endif %}
+                  {% if allemailhook.paginator.num_pages > 1 %}
+                    {% for i in range %}
+                    <li class="page-item"><a class="page-link" href="/email-manager/email-hooks/{{ i }}/">{{ i }}</a></li>
+                    {% endfor %}
+                  {% endif %}
+                  {% if allemailhook.has_next %}
+                  <li class="page-item"><a class="page-link" href="/email-manager/email-hooks/{{ allemailhook.next_page_number }}/">Next</a></li>
+                  {% else %}
+                  <li class="page-item"><a class="page-link">Next</a></li>
+                  {% endif %}
+                </ul>
+              </nav>
+        </div>
+        <div class="col-md-4">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fa fa-anchor"></i> {% trans "Quick Start" %}</h3>
+                    </div>
+                    <form method="post" enctype="multipart/form-data" accept-charset="utf-8" role="form" action="/email-manager/email-hooks/">
+                        {% csrf_token %}
+                        <div class="card-body">
+
+                            <div class="row">
+                              <div class="form-group col-md-12">
+                                        <label for="Title">{% trans "Title" %}</label>
+                                        <input type="text"  class="form-control" id="Title" required name="title" placeholder="{% trans 'Title' %}">
+                                      </div>
+                            </div>
+                          <div class="row">
+                              <div class="form-group col-md-12">
+                                        <label for="hook">{% trans "Hook" %}</label>
+                                        <input type="text"  class="form-control" id="hook" required name="hook" placeholder="{% trans 'Hook' %}">
+
+                                      <p class="help-block">
+                                        {% trans "No space, separate each word with underscore. (if you want auto generated then please leave blank)" %}
+                                      </p>
+                                </div>
+                            </div>
+                          <div class="row">
+                              <div class="form-group col-md-12">
+                                  <label for="description">{% trans "Description" %}</label>
+                                <textarea type="text"  class="form-control" id="description" required name="description" placeholder="{% trans 'Description' %}"></textarea>
+                              </div>
+                          </div>
+                          <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="status">{% trans "Status" %}</label>
+                                <select name="status" class="form-control" id="status">
+                                    <option value="1">{% trans "Active" %}</option>
+                                    <option value="0">{% trans "Inactive" %}</option>
+                                </select>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </form>
+                </div>
+        </div>
+
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+ {% endblock %}

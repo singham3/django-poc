@@ -1,0 +1,294 @@
+
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block styles %}
+{% endblock %}
+{% block scripts %}
+
+<script>
+
+    function RowDelete(slid) {
+        var removetr = event.target.offsetParent.parentElement;
+        var x = String(slid);
+        var xhr = new XMLHttpRequest();
+        var url = "http://192.168.5.80:8000/setting-manager/settings/social/delete/";
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var json = JSON.parse(xhr.responseText);
+                console.log("json = === === ",json,json.msg);
+                if (json.msg === "Successfully Deleted") {
+                    $(removetr).remove();
+
+                    html = '<div class="alert alert-success alert-dismissible col-md-12">';
+                    html += '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+                    html += '<h5><i class="icon fas fa-check"></i>{% trans "Alert!" %}</h5>';
+                    html +=  '{% trans "Successfully Deleted" %}';
+                    html += '</div>';
+                    document.getElementById("main-content-div").innerHTML = html;
+                }
+            }
+        };
+        var data = JSON.stringify({"slid":x});
+        xhr.send(data);
+    };
+
+</script>
+<script>
+    $(document).on('click', '.button-upload', function() {
+        var _this = $(this);
+        var inputValue = _this.closest("tr").find("input.file_val");
+        var iconBox = _this.closest("tr").find("img");
+        $('#form-upload').remove();
+        var fields = '<input type="file" name="file" />';
+        $('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;">' + fields + '</form>');
+        $('#form-upload input[name=\'file\']').trigger('click');
+        if (typeof timer != 'undefined') {
+            clearInterval(timer);
+        }
+
+        timer = setInterval(function() {
+            if ($('#form-upload input[name=\'file\']').val() != '') {
+                clearInterval(timer);
+                $.ajax({
+                    url: '/mstep/admin/setting-manager/settings/uploads',
+                    type: 'post',
+                    dataType: 'json',
+                    data: new FormData($('#form-upload')[0]),
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader('X-CSRF-Token', CLIENT_TOKEN);
+                        _this.closest("tr").find(".button-upload").button('loading');
+                    },
+                    complete: function() {
+                        _this.closest("tr").find(".button-upload").button('reset');
+                    },
+                    success: function(json) {
+                        if (json.success === true) {
+                            inputValue.val(json.filename);
+                            iconBox.attr('src', json.image_path);
+                        } else {
+                            inputValue.val('');
+                            iconBox.attr('src', "/mstep/img/no_image.gif");
+                            wowMsg(json.message);
+                        }
+
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                    }
+                });
+            }
+        }, 500);
+    });
+
+    var file_row = parseInt({{lastid}},10);
+
+    function addMoreRow() {
+        html = '<tr id="file-row' + file_row + '">';
+        html += '  <td>';
+        html += '  <input name="title" id="' + file_row + '-title" class="form-control"  placeholder="Social Title"><input name="field_type" id="' + file_row + '-field-type" value="text" type="hidden"><input name="manager" id="' + file_row + '-manager" value="social" type="hidden"><input name="social-value" id="' + file_row + '-social-value" value="' + file_row + '_socialvalue" type="hidden">';
+        html += '  </td>';
+
+        html += '  <td>';
+        html += '<input name="url" class="form-control" id="' + file_row + '-config-value" placeholder="Social URL">';
+        html += '  </td>';
+
+        html += '  <td>';
+        html += '<input name="icon" class="form-control" id="' + file_row + '-config-value" placeholder="Icon Class">';
+        html += '  </td>';
+        html += '  <td>';
+        html += '<a onclick="$(\'#file-row' + file_row + '\').remove()" data-toggle="tooltip" title="Remove" class="btn btn-danger pull-right"><i class="fa fa-minus-circle"></i></a>';
+        html += '  </td>';
+        html += '</tr>';
+
+        $('table#tab-theme-files tbody').append(html);
+
+        file_row++;
+    }
+
+</script>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="content-wrapper">
+    {% if form.non_field_errors %}
+<!--        <div class="card-body">-->
+                <div class="alert alert-danger alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> {% trans "Alert!" %}</h5>
+                  {{ form.non_field_errors }}
+                </div>
+
+      {% elif form.errors %}
+<!--        <div class="card-body">-->
+                <div class="alert alert-danger alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> {% trans "Alert!" %}</h5>
+                  {{ form.errors }}
+                </div>
+    {% elif error %}
+<!--        <div class="card-body">-->
+                <div class="alert alert-danger alert-dismissible col-md-12" >
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> {% trans "Alert!" %}</h5>
+                  {{ error }}
+                </div>
+        {% elif msg %}
+                <div id="main-content-div">
+                <div class="alert alert-success alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-check"></i> {% trans "Alert!" %}</h5>
+                  {{msg}}
+                </div>
+                </div>
+        {% else %}
+            <div id="main-content-div"></div>
+        {% endif %}
+    <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>{% trans "Manage Social" %} <h6> {% trans "links Here you can manage the social website links" %} </h6></h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="/dashboard/" class="text-secondary">{% trans "Home" %}</a></li>
+                    <li class="breadcrumb-item"><a href="/setting-manager/settings/" class="text-secondary">{% trans "Setting" %}</a></li>
+                  <li class="breadcrumb-item active">{% trans "Social" %}</li>
+                </ol>
+              </div>
+            </div>
+          </div><!-- /.container-fluid -->
+        </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">{% trans "Alert!" %}</h3>
+                    </div>
+                    <form method="post" enctype="multipart/form-data" accept-charset="utf-8" role="form" action="/setting-manager/settings/social/">
+                        {% csrf_token %}
+                        <div class="row">
+                        <div class="col-md-12">
+
+                            <table class="table table-striped table-bordered" id="tab-theme-files">
+                                <thead>
+                                    <tr>
+                                        <th>{% trans "Title" %}</th>
+                                        <th>{% trans "URL" %}</th>
+                                        <th>{% trans "Icon" %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for i in allsociallinks %}
+                                <tr id="{{i.id}}file_row">
+
+                                 <td>
+                                <input name="title" id="{{i.id}}-title" class="form-control"  value="{{i.title}}"><input name="field_type" id="{{i.id}}-field-type" value="text" type="hidden"><input name="manager" id="{{i.id}}-manager" value="social" type="hidden"><input name="social-value" id="{{i.id}}-social-value" value="{{i.social_value}}" type="hidden">
+                                </td>
+
+                                <td>
+                                <input name="url" class="form-control" id="-{{i.id}}-config-url" value="{{i.url}}">
+                                </td>
+
+                                <td>
+                                <input name="icon" class="form-control" id="-{{i.id}}-config-class" value="{{i.iconclass}}">
+                                </td>
+                               <td>
+                                <a onclick="RowDelete('{{i.id}}')" data-toggle="tooltip" title="Remove" class="btn btn-danger pull-right"><i class="fa fa-minus-circle"></i></a>
+                                </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="3"></td>
+                                        <td class="text-right">
+                                            <button type="button" class="btn btn-primary pull-right" data-toggle="tooltip" title="" onclick="addMoreRow()" data-original-title="Add New"><i class="fa fa-plus"></i></button>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        </div>
+
+                    <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+                </div>
+
+                    </form>
+                </div>
+                <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-end">
+                          {% if allsociallinks.has_previous %}
+                          <li class="page-item"><a class="page-link" href="/setting-manager/settings/social/{{ allsociallinks.previous_page_number }}/">Previous</a></li>
+                          {% else %}
+                          <li class="page-item" ><a class="page-link">Previous</a></li>
+                          {% endif %}
+                          {% if allsociallinks.paginator.num_pages > 1 %}
+                            {% for i in range %}
+                            <li class="page-item"><a class="page-link" href="/setting-manager/settings/social/{{ i }}/">{{ i }}</a></li>
+                            {% endfor %}
+                          {% endif %}
+                          {% if allsociallinks.has_next %}
+                          <li class="page-item"><a class="page-link" href="/setting-manager/settings/social/{{ allsociallinks.next_page_number }}/">Next</a></li>
+                          {% else %}
+                          <li class="page-item"><a class="page-link">Next</a></li>
+                          {% endif %}
+                        </ul>
+                    </nav>
+            </div>
+            <div class="col-md-4">
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <i class="fa fa-exclamation"></i> {% trans "Important Rules" %}
+                    </h3>
+                </div><!-- /.box-header -->
+                <div class="card-body">
+                    <p>
+                        {% trans "For each config settings that would be added to the system, make sure it has these constant/slug:" %}
+                    </p>
+                    <ul>
+                        <li>
+                            <small class="label bg-yellow">
+                                SOCIAL_FACEBOOK
+                            </small> - {% trans "Will be replaced by facebook url from the admin settings." %}
+                        </li>
+                        <li>
+                            <small class="label bg-yellow">
+                                SOCIAL_GOOGLE_PLUS
+                            </small> - {% trans "Will be replaced by google plus url from the admin settings." %}
+                        </li>
+                        <li>
+                            <small class="label bg-yellow">
+                                SOCIAL_TWITTER
+                            </small> - {% trans "Will be replaced by twitter url from the admin settings." %}
+                        </li>
+                        <li>
+                            <small class="label bg-yellow">
+                                SOCIAL_LINKEDIN
+                            </small> - {% trans "Will be replaced by linkedin url from the admin settings." %}
+                        </li>
+                        <li>
+                            <small class="label bg-yellow">
+                                SOCIAL_YOUTUBE
+                            </small> - {% trans "Will be replaced by youtube url from the admin settings." %}
+                        </li>
+
+                    </ul>
+                </div><!-- ./box-body -->
+            </div>
+        </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

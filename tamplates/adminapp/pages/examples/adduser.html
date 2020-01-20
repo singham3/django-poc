@@ -1,0 +1,204 @@
+
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block styles %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+
+<script>
+    var password = document.getElementById("exampleInputPassword1");
+    var confirm_password = document.getElementById("exampleInputConfirm_Password1");
+
+        function validatePassword(){
+          if(password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Passwords Don't Match");
+          } else {
+            confirm_password.setCustomValidity('');
+          }
+        }
+
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+
+</script>
+<script>
+	$(document).ready(function(){
+		var date_input=$('input[name="date"]'); //our date input has the name "date"
+		var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+		date_input.datepicker({
+			format: 'mm/dd/yyyy',
+			container: container,
+			todayHighlight: true,
+			autoclose: true,
+		})
+	})
+</script>
+
+{% endblock %}
+
+{% block content %}
+  <!-- Content Wrapper. Contains page content -->
+
+
+  <div class="content-wrapper">
+      {% if form.non_field_errors %}
+<!--        <div class="card-body">-->
+                <div class="alert alert-danger alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> {% trans "Alert!" %}</h5>
+                  {{ form.non_field_errors }}
+                </div>
+
+      {% elif form.errors %}
+<!--        <div class="card-body">-->
+                <div class="alert alert-danger alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> {% trans "Alert!" %}</h5>
+                  {{ form.errors }}
+                </div>
+    {% elif error %}
+<!--        <div class="card-body">-->
+                <div class="alert alert-danger alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> {% trans "Alert!" %}</h5>
+                  {{ error }}
+                </div>
+      {% elif msg %}
+                <div id="main-content-div">
+                <div class="alert alert-success alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-check"></i> {% trans "Alert!" %}</h5>
+                  {{msg}}
+                </div>
+                </div>
+        {% endif %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>{% trans "General Form" %}</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/dashboard/" class="text-secondary">{% trans "Home" %}</a></li>
+                <li class="breadcrumb-item"><a href="/users/pages/" class="text-secondary">{% trans "Admin user" %}</a></li>
+              <li class="breadcrumb-item active">{% trans "Add User" %}</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-6" style="flex: 0 0 100%;max-width: 100%;">
+            <!-- general form elements -->
+            <div class="card card-primary card-outline">
+              <div class="card-header">
+                <h3 class="card-title" style="display:inline-block;">{% trans "Quick Example" %}</h3>
+                  <a href="/users/pages/" class="btn btn-default float-right" style="display:inline-block;" title="Back"><i class="fa fa-fw fa-chevron-circle-left"></i> {% trans "Back" %}</a>
+
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" action="/users/pages/add/" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                    <label for="exampleInputUsername1">{% trans "Username" %}</label>
+                    <input type="text" class="form-control" required id="exampleInputUsername1" name="username" placeholder="{% trans 'Username' %}">
+                  </div>
+                  <div class="form-group col-md-6">
+                  <div class="bootstrap-iso">
+                    <label class="control-label requiredField" for="date">{% trans "Date Of Birth" %}</label>
+                        <div class="input-group">
+                            <input class="form-control" id="date" required name="date" placeholder="{% trans 'MM/DD/YYYY' %}" type="text"/>
+                         </div>
+                  </div>
+                  </div>
+                  </div>
+
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">{% trans "First Name" %}</label>
+                    <input type="text" required class="form-control" id="exampleInputFirstName1" name="first_name" placeholder="{% trans 'First Name' %}">
+                  </div>
+                        <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">{% trans "Last Name" %}</label>
+                    <input type="text" required class="form-control" id="exampleInputLastName1" name="last_name" placeholder="{% trans 'Last Name' %}">
+                  </div>
+                 </div>
+
+                    <div class="row">
+                  <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">{% trans "Email address" %}</label>
+                    <input type="email" required class="form-control" id="exampleInputEmail1" name="email" placeholder="{% trans 'Enter email' %}">
+                  </div>
+                        <div class="form-group col-md-6" >
+                    <label for="exampleInputEmail1">{% trans "Mobile" %}</label>
+                    <input type="text" required class="form-control" id="exampleInputMobile" name="mobile" placeholder="{% trans 'Mobile' %}">
+                  </div>
+
+
+                         </div>
+                  <div class="row">
+                  <div class="form-group col-md-6">
+                      <label for="status">{% trans "Status" %}</label>
+                      <select name="status" class="form-control" id="status">
+                          <option value="1">{% trans "Active" %}</option>
+                          <option value="0">{% trans "Inactive" %}</option>
+                      </select>
+                  </div>
+                        <div class="form-group col-md-6">
+                    <label for="exampleInputFile">{% trans "File input" %}</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" name="userimg" required class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">{% trans "Choose file" %}</label>
+                      </div>
+                    </div>
+                  </div>
+                     </div>
+                    <div class="row">
+                     <div class="form-group col-md-6">
+                    <label for="exampleInputPassword1">{% trans "Password" %}</label>
+                    <input type="password" required class="form-control" id="exampleInputPassword1" name="password" placeholder="{% trans 'Password' %}">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="exampleInputConfirm_Password1">{% trans "Confirm Password" %}</label>
+                    <input type="password" required class="form-control" id="exampleInputConfirm_Password1"  name="confirm_password" placeholder="{% trans 'Confirm Password' %}">
+                  </div>
+                    </div>
+<!--                  <div class="form-check">-->
+<!--                    <input type="checkbox" class="form-check-input" id="exampleCheck1">-->
+<!--                    <label class="form-check-label" for="exampleCheck1">Check me out</label>-->
+<!--                  </div>-->
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+                </div>
+              </form>
+            </div>
+
+        </div>
+
+        </div></div>
+    </section>
+
+  </div>
+
+{% endblock %}

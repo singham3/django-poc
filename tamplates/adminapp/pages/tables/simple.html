@@ -1,0 +1,139 @@
+
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block styles %}
+{% endblock %}
+{% block scripts %}
+{% endblock %}
+{% block content %}
+{% csrf_token %}
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+      {% if msg %}
+<!--        <div class="card-body">-->
+                <div class="alert alert-success alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-check"></i> {% trans "Alert!" %}</h5>
+                  {{msg}}
+                </div>
+    {% elif error %}
+              <div class="alert alert-danger alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> {% trans "Alert!" %}</h5>
+                  {{ error }}
+                </div>
+    {% endif %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>{% trans "Manage User" %}</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/dashboard/" class="text-secondary">{% trans "Home" %}</a></li>
+              <li class="breadcrumb-item active">{% trans "Admin Users" %}</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="content">
+      <div class="container-fluid">
+
+        <div class="row">
+          <div class="col-12">
+            <div class="card card-primary card-outline">
+              <div class="card-header" style="display:inline-block">
+                <h3 class="card-title" style="display:inline-block">{% trans "Responsive Hover Table" %}</h3>
+
+                <div class="card-tools" >
+                </div>
+                <div class="float-right" style="display:inline-block">
+                          <a href="/users/pages/add/"><button type="button" class="btn btn-success">{% trans "+ New User" %}</button></a>
+                        </div>
+              </div>
+
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>{% trans "ID" %}</th>
+                      <th>{% trans "Name" %}</th>
+                      <th>{% trans "Email" %}</th>
+                      <th>{% trans "Status" %}</th>
+                      <th>{% trans "Registered On" %}</th>
+                      <th class="text-center">{% trans "Actions" %}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for i in all_user %}
+                    <tr>
+                      <td>{{ i.account_id }}</td>
+                      <td>{{ i.first_name }} {{ i.last_name }}</td>
+                      <td>{{ i.email }}</td>
+                      {% if i.is_active == 1 %}
+                        <td><span class="tag tag-success">{% trans "Active" %}</span></td>
+                      {% elif i.is_active == 0 %}
+                        <td><span class="tag tag-success">{% trans "Inactive" %}</span></td>
+                      {% endif %}
+                      <td>{{i.date_joined}}</td>
+                      <td class="text-right"><div class="margin">
+
+                  <div class="btn-group">
+
+                    <button type="button" class="btn btn-success">{% trans "Action" %}</button>
+                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                      <span class="caret"></span>
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu" role="menu">
+                      <a class="dropdown-item" href="/users/pages/view/{{ i.account_id }}/">{% trans "View" %}</a>
+                      <a class="dropdown-item" href="/users/pages/edit/{{ i.account_id }}/">{% trans "Edit" %}</a>
+                      <a class="dropdown-item" href="/users/pages/delete/{{ i.account_id }}/">{% trans "Delete" %}</a>
+                  </div>
+                  </div></div></td>
+                    </tr>
+                  {% endfor %}
+
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+            <!-- /.card -->
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                  {% if all_user.has_previous %}
+                  <li class="page-item"><a class="page-link" href="/users/pages/{{ all_user.previous_page_number }}/">Previous</a></li>
+                  {% else %}
+                  <li class="page-item" ><a class="page-link">Previous</a></li>
+                  {% endif %}
+                  {% if cmsdata.paginator.num_pages > 1 %}
+                    {% for i in range %}
+                    <li class="page-item"><a class="page-link" href="/users/pages/{{ i }}/">{{ i }}</a></li>
+                    {% endfor %}
+                  {% endif %}
+                  {% if all_user.has_next %}
+                  <li class="page-item"><a class="page-link" href="/users/pages/{{ all_user.next_page_number }}/">Next</a></li>
+                  {% else %}
+                  <li class="page-item"><a class="page-link">Next</a></li>
+                  {% endif %}
+                </ul>
+              </nav>
+          </div>
+        </div>
+
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+{% endblock %}

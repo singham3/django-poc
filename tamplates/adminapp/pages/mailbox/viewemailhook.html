@@ -1,0 +1,93 @@
+
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block styles %}
+{% endblock %}
+{% block scripts %}
+{% endblock %}
+{% block content %}
+{% csrf_token %}
+
+
+
+<div class="content-wrapper" style="min-height: 319px;">
+
+<section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+              <h1>{% trans "Manage Email" %} <h6>{% trans "Hook Email Hook Detail" %}</h6></h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/dashboard/" class="text-secondary">{% trans "Home" %}</a></li>
+                <li class="breadcrumb-item"><a href="/email-manager/email-hooks/" class="text-secondary">{% trans "Email hooks" %}</a></li>
+              <li class="breadcrumb-item active">{% trans "View Email hook" %}</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="content" data-table="users">
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col-md-12">
+        <div class="card card-primary card-outline">
+        <div class="card-header">
+            <h3 class="card-title" style="display:inline-block">{{viewhookemail.title}}</h3>
+                        <a href="/email-manager/email-hooks/" class="btn btn-default float-right" title="Back" style="display:inline-block"><i class="fa fa-fw fa-chevron-circle-left"></i> {% trans "Back" %}</a>
+        </div>
+            <div class="box-body">
+            {% if viewhookemail %}
+            <table class="table table-hover table-striped">
+                <tbody>
+                <tr>
+                    <th scope="row">{% trans "ID" %}</th>
+                    <td>{{viewhookemail.id}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "Title" %}</th>
+                    <td>{{viewhookemail.title}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "Hook" %}</th>
+                    <td>{{viewhookemail.hook}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "Created" %}</th>
+                    <td>{{viewhookemail.createdat}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "Modified" %}</th>
+                    <td>{{viewhookemail.updatedat}}</td>
+                </tr>
+
+                {% if viewhookemail.status == 1 or viewhookemail.status == True %}
+                <tr>
+                    <th scope="row">{% trans "Status" %}</th>
+                    <td>{% trans "Active" %}</td>
+                </tr>
+                {% elif  viewhookemail.status == 0 or viewhookemail.status == False%}
+                <tr>
+                    <th scope="row">{% trans "Status" %}</th>
+                    <td>{% trans "Inactive" %}</td>
+                </tr>
+                {% endif %}
+                 <tr>
+                    <th scope="row">{% trans "Description" %}</th>
+                    <td>{{viewhookemail.description}}</td>
+                </tr>
+            </tbody></table>
+            {% endif %}
+
+        </div>
+
+    </div>
+    </div>
+        </div></div>
+</section>
+            </div>
+
+{% endblock %}

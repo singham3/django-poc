@@ -1,0 +1,8 @@
+{
+  "succmsg": {
+      "succupdate": "Successfully Updated",
+      "succdelete": "Successfully Delete",
+      "succadd": "Successfully Add in Database"
+  },
+  "errorms": {}
+}

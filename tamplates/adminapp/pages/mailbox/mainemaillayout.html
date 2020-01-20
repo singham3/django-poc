@@ -1,0 +1,126 @@
+
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block styles %}
+{% endblock %}
+{% block scripts %}
+{% endblock %}
+{% block content %}
+{% csrf_token %}
+
+
+
+<div class="content-wrapper" style="min-height: 319px;">
+
+<section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+              <h1>{% trans "Manage Email" %} <h6>{% trans "Hook Email Hook Detail" %}</h6></h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/dashboard/" class="text-secondary">{% trans "Home" %}</a></li>
+                <li class="breadcrumb-item"><a href="/email-template/email-preferences/" class="text-secondary">{% trans "Email preferences" %}</a></li>
+              <li class="breadcrumb-item active">{% trans "View Email preferences" %}</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="content" data-table="users">
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col-md-12">
+        <div class="card card-primary card-outline">
+        <div class="card-header">
+            <h3 class="card-title" style="display:inline-block;">{% trans "Main Email Layout" %}</h3>
+                        <a href="/email-template/email-preferences/" class="btn btn-default float-right"  title="Back" style="display:inline-block;"><i class="fa fa-fw fa-chevron-circle-left"></i> {% trans "Back" %}</a>
+        </div>
+            <div class="box-body">
+                {% if listmel %}
+                <table class="table table-hover table-striped">
+                    <tbody>
+                    <tr>
+                        <th scope="row">{% trans "ID" %}</th>
+                        <td>{{listmel.id}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">{% trans "Title" %}</th>
+                        <td>{{listmel.title}}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">{% trans "Created" %}</th>
+                        <td>{{listmel.createdat}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">{% trans "Modified" %}</th>
+                        <td>{{listmel.updatedat}}</td>
+                    </tr>
+
+
+                    <tr>
+                        <th scope="row">{% trans "Status" %}</th>
+                        <td>Active</td>
+                    </tr>
+
+
+                </tbody></table>
+            {% endif %}
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>{% trans "Layout Html" %}</h4>
+                       {{listmel.layout_html | safe}}
+                </div>
+            </div>
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                      <th>{% trans "ID" %}</th>
+                      <th>{% trans "Subject" %}</th>
+                      <th>{% trans "Created" %}</th>
+                      <th>{% trans "Modified" %}</th>
+                      <th>{% trans "Actions" %}</th>
+                    </tr>
+                  </thead>
+                    <tbody>
+                    {% for i in emailtamps %}
+                    <tr>
+                        <td>{{i.id}}</td>
+                        <td>{{i.subject}}</td>
+                        <td>{{i.createdat}}</td>
+                        <td>{{i.updatedat}}</td>
+                        <td><div class="margin">
+
+                  <div class="btn-group">
+
+                    <button type="button" class="btn btn-success">Action</button>
+                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                      <span class="caret"></span>
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu" role="menu">
+                      <a class="dropdown-item" href="/email-manager/email-templates/view/{{i.id}}/">View</a>
+                      <a class="dropdown-item" href="/email-manager/email-templates/edit/{{i.id}}/">Edit</a>
+
+                  </div>
+                  </div></div></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+    </div>
+        </div></div>
+</section>
+            </div>
+
+{% endblock %}

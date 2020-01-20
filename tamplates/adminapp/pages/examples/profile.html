@@ -1,0 +1,238 @@
+
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block styles %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+
+<script>
+    function RemoveImage(elment) {
+        document.getElementById(elment.previousElementSibling.id).src = "{% static '/dist/img/admin-default.png' %}";
+        document.getElementById(elment.nextElementSibling.nextElementSibling.id).value = "";
+    };
+</script>
+<script type="text/javascript">
+
+    function PreviewImage() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
+
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("uploadPreview").src = oFREvent.target.result;
+            document.getElementById("uploadImage").src = oFREvent.target.result;
+        };
+    };
+
+</script>
+<script>
+    var password = document.getElementById("exampleInputPassword1");
+    var confirm_password = document.getElementById("exampleInputConfirm_Password1");
+
+        function validatePassword(){
+          if(password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Passwords Don't Match");
+          } else {
+            confirm_password.setCustomValidity('');
+          }
+        }
+
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+
+</script>
+<script>
+	$(document).ready(function(){
+		var date_input=$('input[name="date"]'); //our date input has the name "date"
+		var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+		date_input.datepicker({
+			format: 'mm/dd/yyyy',
+			container: container,
+			todayHighlight: true,
+			autoclose: true,
+		})
+	})
+</script>
+
+{% endblock %}
+
+{% block content %}
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+      {% if form.non_field_errors %}
+<!--        <div class="card-body">-->
+                <div class="alert alert-danger alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> {% trans "Alert!" %}</h5>
+                  {{ form.non_field_errors }}
+                </div>
+
+      {% elif form.errors %}
+<!--        <div class="card-body">-->
+                <div class="alert alert-danger alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> {% trans "Alert!" %}</h5>
+                  {{ form.errors }}
+                </div>
+    {% elif error %}
+<!--        <div class="card-body">-->
+                <div class="alert alert-danger alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> {% trans "Alert!" %}</h5>
+                  {{ error }}
+                </div>
+      {% elif msg %}
+                <div class="alert alert-success alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-check"></i> {% trans "Alert!" %}</h5>
+                  {{msg}}
+                </div>
+        {% endif %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>{% trans "Profile" %}</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/dashboard/" class="text-secondary">{% trans "Home" %}</a></li>
+                <li class="breadcrumb-item"><a href="/users/pages/" class="text-secondary">{% trans "Admin Users" %}</a></li>
+              <li class="breadcrumb-item active">{% trans "Profile" %}</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+
+          <div class="col-md-9" style="flex: 0 0 100%;max-width: 100%;">
+            <div class="card card-primary card-outline">
+              <div class="card-header p-2">
+                <ul class="nav nav-pills">
+
+                  <li class="nav-item">{% trans "Profile" %}</a></li>
+                </ul>
+              </div><!-- /.card-header -->
+              <div class="card-body">
+                <div class="tab-content">
+
+                  <div class="active tab-pane" id="settings">
+                    <form class="form-horizontal" action="/user/profile/" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                      <div class="row">
+                      <div class="form-group col-md-6">
+                        <label for="inputName" class="control-label">{% trans "Username" %}</label>
+                        <div>
+                          <input type="text" class="form-control" id="inputName" name="username" readonly value={{profiledata.username}}>
+                        </div>
+                           <div class="bootstrap-iso">
+                        <label class="control-label requiredField" for="date">{% trans "Date Of Birth" %}</label>
+                            <div class="input-group">
+                                <input class="form-control" id="date" required name="date" value="{{profiledata.dateofbirth | date:'m/d/Y'}}"  type="text"/>
+                             </div>
+                      </div>
+                      </div>
+                      <div class="form-group col-md-6">
+                          <div class="bootstrap-iso">
+                        <label for="inputPhone" class="control-label">{% trans "Phone Number" %}</label>
+                        <div>
+                          <input type="text" class="form-control" id="inputPhone" name="mobile" value={{profiledata.mobile}}>
+                        </div>
+                          </div>
+                          <div class="bootstrap-iso">
+                              <label for="inputemail" class="control-label">{% trans "Email" %}</label>
+                        <div>
+                          <input type="email" class="form-control" id="inputemail" name="email" readonly value={{profiledata.email}}>
+                        </div>
+                      </div>
+                      </div>
+</div>
+                      <div class="row">
+                     <div class="form-group col-md-6">
+                         <div class="bootstrap-iso">
+                    <label for="exampleInputPassword1">{% trans "Password" %}</label>
+                    <input type="password"  class="form-control" id="exampleInputPassword1" name="password" placeholder="{% trans 'Password' %}">
+                         </div>
+
+                         <div class="bootstrap-iso">
+                             <label for="exampleInputConfirm_Password1">{% trans "Confirm Password" %}</label>
+                        <input type="password"  class="form-control" id="exampleInputConfirm_Password1"  name="confirm_password" placeholder="{% trans 'Confirm Password' %}">
+                         </div>
+                         </div>
+                          {% if profiledata.userimg %}
+                         <div class="form-group col-md-6 pt-4">
+
+                        <div class="col-md-6 imageBox" id="imageBox-0">
+                          <div class="image-upload">
+                                <img src={{profiledata.userimg.url}} id="uploadPreview" style="max-width:117px;" />
+                                <button type="button" class="btn btn-danger pull-right" id="config-btn" onclick="RemoveImage(this)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                              <label for="uploadImage" class="btn btn-primary pull-right"><i class="fa fa-pencil" aria-hidden="true"></i></label>
+                               <input type="file" name="userimg" value={{profiledata.userimg.url}} id="uploadImage" onchange="PreviewImage();" style="display:none;" >
+
+                          </div>
+                        </div>
+
+                </div>
+                          {% else %}
+                          <div class="form-group col-md-6 pt-4">
+
+                        <div class="col-md-6 imageBox" id="imageBox-0">
+                          <div class="image-upload">
+                                <img src="{% static '/dist/img/no_image-512.png' %}" id="uploadPreview" style="max-width:117px;" />
+                                <button type="button" class="btn btn-danger pull-right" id="config-btn" onclick="RemoveImage(this)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                              <label for="uploadImage" class="btn btn-primary pull-right"><i class="fa fa-pencil" aria-hidden="true"></i></label>
+                               <input type="file" name="userimg" value="" id="uploadImage" onchange="PreviewImage();" style="display:none;" >
+
+                          </div>
+                        </div>
+
+                </div>
+                          {% endif %}
+
+
+
+                      </div>
+                        <input type="hidden" name="account_id" value={{profiledata.account_id}}>
+
+                      <div class="row">
+                      <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                          <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                          <a href="/users/pages/"><button type="button" class="btn btn-warning">{% trans "Cancel" %}</button></a>
+                        </div>
+                      </div>
+                        </div>
+
+                    </form>
+                  </div>
+                  <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.nav-tabs-custom -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+{% endblock %}

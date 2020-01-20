@@ -1,0 +1,97 @@
+
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block styles %}
+{%endblock%}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+
+
+{% csrf_token %}
+
+
+
+<div class="content-wrapper" style="min-height: 319px;">
+
+<section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>{% trans "Setting Detail" %}</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/dashboard/" class="text-secondary">{% trans "Home" %}</a></li>
+              <li class="breadcrumb-item"><a href="/setting-manager/settings/" class="text-secondary">{% trans "Setting" %}</a></li>
+              <li class="breadcrumb-item active">{% trans "View Setting" %}</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="content" data-table="users">
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col-md-12">
+        <div class="card card-primary card-outline">
+        <div class="card-header">
+            <h3 class="card-title" style="display:inline-block">{% trans "Setting Detail" %}</h3>
+            <a href="/setting-manager/settings/" class="btn btn-default float-right" title="Back" style="display:inline-block"><i class="fa fa-fw fa-chevron-circle-left"></i> {% trans "Back" %}</a>
+        </div>
+        <div class="box-body">
+
+            <table class="table table-hover table-striped">
+                <tbody>
+                {% if settingdata %}
+                <tr>
+                    <th scope="row">{% trans "Title" %}</th>
+                    <td>{{settingdata.title}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "Manager" %}</th>
+                    <td>general</td>
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "Constant/Slug" %}</th>
+                    <td>{{settingdata.Constant_Slug}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "Config Value" %}</th>
+
+
+                    {% if settingdata.config_value_bool == True %}
+                        <td>1</td>
+                    {% elif settingdata.config_value_bool == False %}
+                        <td>0</td>
+                    {% elif settingdata.config_value_text %}
+                    <td>{{settingdata.config_value_text}}</td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "Field Type" %}</th>
+                    <td>{{settingdata.field_type}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "Created" %}</th>
+                    <td>{{settingdata.createdat | date:'m/d/Y P'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{% trans "Modified" %}</th>
+                    <td>{{settingdata.updatedat | date:'m/d/Y P'}}</td>
+                </tr>
+
+                {% endif %}
+            </tbody></table>
+
+        </div>
+
+    </div>
+</section>
+            </div>
+
+{% endblock %}

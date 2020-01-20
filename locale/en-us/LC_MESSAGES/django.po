@@ -1,0 +1,1565 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-09-20 06:09+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: CMSpages/views.py:27 adminapp/views.py:138 email_templates/views.py:57
+#: email_templates/views.py:124 settings/views.py:80
+#: tamplates/adminapp/pages/examples/addsociallinks.html:28
+msgid "Successfully Deleted"
+msgstr "Successfully Deleted"
+
+#: CMSpages/views.py:51 CMSpages/views.py:71 adminapp/views.py:121
+#: email_templates/views.py:73 email_templates/views.py:116
+#: email_templates/views.py:189 settings/views.py:69 settings/views.py:121
+#: settings/views.py:159 settings/views.py:196
+msgid "Successfully Updated"
+msgstr "Successfully Updated"
+
+#: POC/settings.py:115
+msgid "English"
+msgstr "English"
+
+#: POC/settings.py:116
+msgid "French"
+msgstr "French"
+
+#: adminapp/emailsend.py:58
+#, fuzzy
+#| msgid "Successfully Deleted"
+msgid "Mail Successfully Sent"
+msgstr "Successfully Deleted"
+
+#: adminapp/forms.py:35 adminapp/forms.py:115
+msgid "password and confirm password does not match"
+msgstr "password and confirm password does not match"
+
+#: adminapp/forms.py:39
+msgid "username already exist"
+msgstr "username already exist"
+
+#: adminapp/forms.py:43
+msgid "Email already exist"
+msgstr "Email already exist"
+
+#: adminapp/forms.py:47
+msgid "Mobile number already exist"
+msgstr "Mobile number already exist"
+
+#: adminapp/forms.py:64 adminapp/forms.py:89
+msgid "User is not Valid"
+msgstr "User is not Valid"
+
+#: adminapp/forms.py:119
+msgid "confirm password feild is required"
+msgstr "confirm password feild is required"
+
+#: adminapp/forms.py:138
+msgid "This email address does not exist in database.!"
+msgstr "This email address does not exist in database.!"
+
+#: adminapp/forms.py:156
+msgid "Password And Confirm Password Not Match"
+msgstr "Password And Confirm Password Not Match"
+
+#: adminapp/middleware.py:179
+msgid "URL time out"
+msgstr "URL time out"
+
+#: adminapp/middleware.py:181
+msgid "Page not found."
+msgstr "Page not found."
+
+#: adminapp/views.py:81
+msgid "Successfully Update"
+msgstr "Successfully Update"
+
+#: adminapp/views.py:175
+msgid ""
+"Please enter the correct username and password for a staff account. Note "
+"that both fields may be case-sensitive."
+msgstr ""
+"Please enter the correct username and password for a staff account. Note "
+"that both fields may be case-sensitive."
+
+#: adminapp/views.py:177
+msgid "Invalid Username and Password"
+msgstr "Invalid Username and Password"
+
+#: adminapp/views.py:195
+msgid "email not found"
+msgstr "email not found"
+
+#: adminapp/views.py:215
+msgid "User Details not Valid"
+msgstr "User Details not Valid"
+
+#: adminapp/views.py:217
+msgid "Token Time Out"
+msgstr "Token Time Out"
+
+#: email_templates/views.py:24 email_templates/views.py:40
+#: email_templates/views.py:143 email_templates/views.py:162
+msgid "Successfully Created"
+msgstr "Successfully Created"
+
+#: tamplates/adminapp/index.html:68 tamplates/header.html:72
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: tamplates/adminapp/index.html:72
+#: tamplates/adminapp/pages/examples/404.html:24
+#: tamplates/adminapp/pages/examples/500.html:22
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:54
+#: tamplates/adminapp/pages/examples/addsettings.html:77
+#: tamplates/adminapp/pages/examples/addsociallinks.html:162
+#: tamplates/adminapp/pages/examples/adduser.html:84
+#: tamplates/adminapp/pages/examples/cmdpageview.html:42
+#: tamplates/adminapp/pages/examples/editsettings.html:83
+#: tamplates/adminapp/pages/examples/edituser.html:70
+#: tamplates/adminapp/pages/examples/favandlogo.html:133
+#: tamplates/adminapp/pages/examples/profile.html:105
+#: tamplates/adminapp/pages/examples/viewgeneralsettings.html:28
+#: tamplates/adminapp/pages/examples/viewuser.html:30
+#: tamplates/adminapp/pages/forms/editeditors.html:69
+#: tamplates/adminapp/pages/forms/editors.html:61
+#: tamplates/adminapp/pages/mailbox/addemailhook.html:100
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:109
+#: tamplates/adminapp/pages/mailbox/addmainemaillayout.html:109
+#: tamplates/adminapp/pages/mailbox/editemailhook.html:100
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:109
+#: tamplates/adminapp/pages/mailbox/editmainemaillayout.html:109
+#: tamplates/adminapp/pages/mailbox/listmainemaillayout.html:99
+#: tamplates/adminapp/pages/mailbox/mailbox.html:99
+#: tamplates/adminapp/pages/mailbox/mainemaillayout.html:24
+#: tamplates/adminapp/pages/mailbox/read-mail.html:100
+#: tamplates/adminapp/pages/mailbox/viewemailhook.html:24
+#: tamplates/adminapp/pages/mailbox/viewemailtemplate.html:24
+#: tamplates/adminapp/pages/tables/cmspagestables.html:37
+#: tamplates/adminapp/pages/tables/simple.html:38
+#: tamplates/adminapp/pages/tables/simple2.html:82
+msgid "Home"
+msgstr "Home"
+
+#: tamplates/adminapp/index.html:73
+msgid "Dashboards"
+msgstr "Dashboards"
+
+#: tamplates/adminapp/index.html:93
+msgid "Cms Pages"
+msgstr "Cms Pages"
+
+#: tamplates/adminapp/index.html:98 tamplates/adminapp/index.html:119
+#: tamplates/adminapp/index.html:136
+msgid "More info"
+msgstr "More info"
+
+#: tamplates/adminapp/index.html:114
+msgid "User Registrations"
+msgstr "User Registrations"
+
+#: tamplates/adminapp/index.html:131
+msgid "Email Templates"
+msgstr "Email Templates"
+
+#: tamplates/adminapp/pages/examples/404.html:25
+msgid "404 Error Page"
+msgstr "404 Error Page"
+
+#: tamplates/adminapp/pages/examples/404.html:35
+msgid "404"
+msgstr "404"
+
+#: tamplates/adminapp/pages/examples/404.html:38
+msgid "Oops! Page not found."
+msgstr "Oops! Page not found."
+
+#: tamplates/adminapp/pages/examples/404.html:42
+#: tamplates/adminapp/pages/examples/500.html:40
+msgid "return to dashboard"
+msgstr "return to dashboard"
+
+#: tamplates/adminapp/pages/examples/404.html:42
+#: tamplates/adminapp/pages/examples/500.html:40
+msgid "or try using the search form."
+msgstr "or try using the search form."
+
+#: tamplates/adminapp/pages/examples/500.html:18
+#: tamplates/adminapp/pages/examples/500.html:23
+msgid "500 Error Page"
+msgstr "500 Error Page"
+
+#: tamplates/adminapp/pages/examples/500.html:36
+#: tamplates/adminapp/pages/examples/changepasserror.html:41
+msgid "Oops!"
+msgstr "Oops!"
+
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:20
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:28
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:36
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:42
+#: tamplates/adminapp/pages/examples/addsettings.html:48
+#: tamplates/adminapp/pages/examples/addsettings.html:56
+#: tamplates/adminapp/pages/examples/addsettings.html:64
+#: tamplates/adminapp/pages/examples/addsociallinks.html:27
+#: tamplates/adminapp/pages/examples/addsociallinks.html:125
+#: tamplates/adminapp/pages/examples/addsociallinks.html:133
+#: tamplates/adminapp/pages/examples/addsociallinks.html:140
+#: tamplates/adminapp/pages/examples/addsociallinks.html:147
+#: tamplates/adminapp/pages/examples/addsociallinks.html:175
+#: tamplates/adminapp/pages/examples/adduser.html:55
+#: tamplates/adminapp/pages/examples/adduser.html:63
+#: tamplates/adminapp/pages/examples/adduser.html:71
+#: tamplates/adminapp/pages/examples/changepass.html:49
+#: tamplates/adminapp/pages/examples/changepass.html:57
+#: tamplates/adminapp/pages/examples/changepass.html:70
+#: tamplates/adminapp/pages/examples/cmdpageview.html:29
+#: tamplates/adminapp/pages/examples/editsettings.html:49
+#: tamplates/adminapp/pages/examples/editsettings.html:57
+#: tamplates/adminapp/pages/examples/editsettings.html:64
+#: tamplates/adminapp/pages/examples/editsettings.html:70
+#: tamplates/adminapp/pages/examples/edituser.html:36
+#: tamplates/adminapp/pages/examples/edituser.html:44
+#: tamplates/adminapp/pages/examples/edituser.html:51
+#: tamplates/adminapp/pages/examples/edituser.html:57
+#: tamplates/adminapp/pages/examples/favandlogo.html:94
+#: tamplates/adminapp/pages/examples/favandlogo.html:102
+#: tamplates/adminapp/pages/examples/favandlogo.html:110
+#: tamplates/adminapp/pages/examples/favandlogo.html:117
+#: tamplates/adminapp/pages/examples/forgetpass.html:51
+#: tamplates/adminapp/pages/examples/forgetpass.html:59
+#: tamplates/adminapp/pages/examples/forgetpass.html:66
+#: tamplates/adminapp/pages/examples/forgetpass.html:72
+#: tamplates/adminapp/pages/examples/login.html:49
+#: tamplates/adminapp/pages/examples/login.html:57
+#: tamplates/adminapp/pages/examples/login.html:65
+#: tamplates/adminapp/pages/examples/profile.html:71
+#: tamplates/adminapp/pages/examples/profile.html:79
+#: tamplates/adminapp/pages/examples/profile.html:86
+#: tamplates/adminapp/pages/examples/profile.html:92
+#: tamplates/adminapp/pages/forms/editeditors.html:35
+#: tamplates/adminapp/pages/forms/editeditors.html:43
+#: tamplates/adminapp/pages/forms/editeditors.html:50
+#: tamplates/adminapp/pages/forms/editeditors.html:56
+#: tamplates/adminapp/pages/forms/editors.html:32
+#: tamplates/adminapp/pages/forms/editors.html:40
+#: tamplates/adminapp/pages/forms/editors.html:48
+#: tamplates/adminapp/pages/mailbox/addemailhook.html:63
+#: tamplates/adminapp/pages/mailbox/addemailhook.html:71
+#: tamplates/adminapp/pages/mailbox/addemailhook.html:79
+#: tamplates/adminapp/pages/mailbox/addemailhook.html:86
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:73
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:81
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:89
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:96
+#: tamplates/adminapp/pages/mailbox/addmainemaillayout.html:73
+#: tamplates/adminapp/pages/mailbox/addmainemaillayout.html:81
+#: tamplates/adminapp/pages/mailbox/addmainemaillayout.html:89
+#: tamplates/adminapp/pages/mailbox/addmainemaillayout.html:96
+#: tamplates/adminapp/pages/mailbox/editemailhook.html:63
+#: tamplates/adminapp/pages/mailbox/editemailhook.html:71
+#: tamplates/adminapp/pages/mailbox/editemailhook.html:79
+#: tamplates/adminapp/pages/mailbox/editemailhook.html:86
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:73
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:81
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:89
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:96
+#: tamplates/adminapp/pages/mailbox/editmainemaillayout.html:73
+#: tamplates/adminapp/pages/mailbox/editmainemaillayout.html:81
+#: tamplates/adminapp/pages/mailbox/editmainemaillayout.html:89
+#: tamplates/adminapp/pages/mailbox/editmainemaillayout.html:96
+#: tamplates/adminapp/pages/mailbox/listmainemaillayout.html:62
+#: tamplates/adminapp/pages/mailbox/listmainemaillayout.html:70
+#: tamplates/adminapp/pages/mailbox/listmainemaillayout.html:78
+#: tamplates/adminapp/pages/mailbox/listmainemaillayout.html:85
+#: tamplates/adminapp/pages/mailbox/mailbox.html:62
+#: tamplates/adminapp/pages/mailbox/mailbox.html:70
+#: tamplates/adminapp/pages/mailbox/mailbox.html:78
+#: tamplates/adminapp/pages/mailbox/mailbox.html:85
+#: tamplates/adminapp/pages/mailbox/read-mail.html:63
+#: tamplates/adminapp/pages/mailbox/read-mail.html:71
+#: tamplates/adminapp/pages/mailbox/read-mail.html:79
+#: tamplates/adminapp/pages/mailbox/read-mail.html:86
+#: tamplates/adminapp/pages/tables/cmspagestables.html:18
+#: tamplates/adminapp/pages/tables/cmspagestables.html:24
+#: tamplates/adminapp/pages/tables/simple.html:19
+#: tamplates/adminapp/pages/tables/simple.html:25
+#: tamplates/adminapp/pages/tables/simple2.html:48
+#: tamplates/adminapp/pages/tables/simple2.html:56
+#: tamplates/adminapp/pages/tables/simple2.html:63
+#: tamplates/adminapp/pages/tables/simple2.html:69
+msgid "Alert!"
+msgstr "Alert!"
+
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:50
+#: tamplates/adminapp/pages/tables/simple2.html:78
+msgid "Manage Setting"
+msgstr "Manage Setting"
+
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:50
+msgid "update smtp configuration details"
+msgstr "update smtp configuration details"
+
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:55
+#: tamplates/adminapp/pages/examples/addsettings.html:78
+#: tamplates/adminapp/pages/examples/addsociallinks.html:163
+#: tamplates/adminapp/pages/examples/editsettings.html:84
+#: tamplates/adminapp/pages/examples/favandlogo.html:134
+#: tamplates/adminapp/pages/examples/viewgeneralsettings.html:29
+#: tamplates/header.html:100
+msgid "Setting"
+msgstr "Setting"
+
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:56
+msgid "SMTP"
+msgstr "SMTP"
+
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:67
+#: tamplates/header.html:120
+msgid "SMTP Detail"
+msgstr "SMTP Detail"
+
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:75
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:87
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:98
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:109
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:120
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:131
+#: tamplates/adminapp/pages/examples/addsettings.html:115
+#: tamplates/adminapp/pages/examples/addsettings.html:116
+#: tamplates/adminapp/pages/examples/editsettings.html:121
+#: tamplates/adminapp/pages/examples/favandlogo.html:155
+#: tamplates/adminapp/pages/examples/viewgeneralsettings.html:60
+#: tamplates/adminapp/pages/tables/simple2.html:255
+#: tamplates/adminapp/pages/tables/simple2.html:256
+msgid "Constant/Slug"
+msgstr "Constant/Slug"
+
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:79
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:91
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:102
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:113
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:124
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:135
+#: tamplates/adminapp/pages/examples/addsettings.html:144
+#: tamplates/adminapp/pages/examples/addsettings.html:145
+#: tamplates/adminapp/pages/examples/editsettings.html:161
+#: tamplates/adminapp/pages/examples/editsettings.html:162
+#: tamplates/adminapp/pages/examples/favandlogo.html:156
+#: tamplates/adminapp/pages/examples/viewgeneralsettings.html:64
+#: tamplates/adminapp/pages/tables/simple2.html:283
+#: tamplates/adminapp/pages/tables/simple2.html:284
+msgid "Config Value"
+msgstr "Config Value"
+
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:147
+#: tamplates/adminapp/pages/examples/addsettings.html:154
+#: tamplates/adminapp/pages/examples/addsociallinks.html:224
+#: tamplates/adminapp/pages/examples/adduser.html:185
+#: tamplates/adminapp/pages/examples/changepass.html:103
+#: tamplates/adminapp/pages/examples/editsettings.html:172
+#: tamplates/adminapp/pages/examples/edituser.html:162
+#: tamplates/adminapp/pages/examples/favandlogo.html:194
+#: tamplates/adminapp/pages/examples/forgetpass.html:98
+#: tamplates/adminapp/pages/examples/profile.html:211
+#: tamplates/adminapp/pages/forms/editeditors.html:169
+#: tamplates/adminapp/pages/forms/editors.html:157
+#: tamplates/adminapp/pages/mailbox/addemailhook.html:157
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:184
+#: tamplates/adminapp/pages/mailbox/addmainemaillayout.html:146
+#: tamplates/adminapp/pages/mailbox/editemailhook.html:165
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:194
+#: tamplates/adminapp/pages/mailbox/editmainemaillayout.html:146
+#: tamplates/adminapp/pages/mailbox/mailbox.html:223
+#: tamplates/adminapp/pages/mailbox/read-mail.html:271
+#: tamplates/adminapp/pages/tables/simple2.html:293
+msgid "Submit"
+msgstr "Submit"
+
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:157
+#: tamplates/adminapp/pages/examples/addsettings.html:164
+#: tamplates/adminapp/pages/examples/addsociallinks.html:234
+#: tamplates/adminapp/pages/examples/editsettings.html:182
+#: tamplates/adminapp/pages/examples/favandlogo.html:204
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:197
+#: tamplates/adminapp/pages/mailbox/addmainemaillayout.html:159
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:208
+#: tamplates/adminapp/pages/mailbox/editmainemaillayout.html:160
+#: tamplates/adminapp/pages/mailbox/listmainemaillayout.html:184
+#: tamplates/adminapp/pages/mailbox/read-mail.html:189
+#: tamplates/adminapp/pages/tables/simple2.html:153
+msgid "Important Rules"
+msgstr "Important Rules"
+
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:162
+#: tamplates/adminapp/pages/examples/addsettings.html:169
+#: tamplates/adminapp/pages/examples/addsociallinks.html:239
+#: tamplates/adminapp/pages/examples/editsettings.html:187
+#: tamplates/adminapp/pages/examples/favandlogo.html:209
+#: tamplates/adminapp/pages/tables/simple2.html:158
+msgid ""
+"For each config settings that would be added to the system, make sure it has "
+"these constant/slug:"
+msgstr ""
+"For each config settings that would be added to the system, make sure it has "
+"these constant/slug:"
+
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:168
+msgid "Will be replaced by SMTP allow flag from the admin settings."
+msgstr "Will be replaced by SMTP allow flag from the admin settings."
+
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:173
+msgid "Will be replaced by SMTP email host from the admin settings."
+msgstr "Will be replaced by SMTP email host from the admin settings."
+
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:178
+msgid "Will be replaced by SMTP username from the admin settings."
+msgstr "Will be replaced by SMTP username from the admin settings."
+
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:183
+msgid "Will be replaced by SMTP Password from the admin settings."
+msgstr "Will be replaced by SMTP Password from the admin settings."
+
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:188
+msgid "Will be replaced by SMTP Port from admin settings."
+msgstr "Will be replaced by SMTP Port from admin settings."
+
+#: tamplates/adminapp/pages/examples/SMTPdetails.html:193
+msgid "Will be replaced by SMTP tls from admin settings."
+msgstr "Will be replaced by SMTP tls from admin settings."
+
+#: tamplates/adminapp/pages/examples/addsettings.html:73
+#: tamplates/adminapp/pages/examples/editsettings.html:79
+msgid "Add New setting"
+msgstr "Add New setting"
+
+#: tamplates/adminapp/pages/examples/addsettings.html:79
+#: tamplates/adminapp/pages/examples/addsettings.html:95
+#: tamplates/adminapp/pages/examples/editsettings.html:101
+msgid "Add Setting"
+msgstr "Add Setting"
+
+#: tamplates/adminapp/pages/examples/addsettings.html:96
+#: tamplates/adminapp/pages/examples/adduser.html:103
+#: tamplates/adminapp/pages/examples/cmdpageview.html:58
+#: tamplates/adminapp/pages/examples/editsettings.html:102
+#: tamplates/adminapp/pages/examples/edituser.html:89
+#: tamplates/adminapp/pages/examples/forgetpass.html:97
+#: tamplates/adminapp/pages/examples/viewgeneralsettings.html:44
+#: tamplates/adminapp/pages/examples/viewuser.html:46
+#: tamplates/adminapp/pages/forms/editeditors.html:86
+#: tamplates/adminapp/pages/forms/editeditors.html:175
+#: tamplates/adminapp/pages/forms/editors.html:78
+#: tamplates/adminapp/pages/forms/editors.html:163
+#: tamplates/adminapp/pages/mailbox/addemailhook.html:116
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:124
+#: tamplates/adminapp/pages/mailbox/addmainemaillayout.html:124
+#: tamplates/adminapp/pages/mailbox/editemailhook.html:116
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:124
+#: tamplates/adminapp/pages/mailbox/editmainemaillayout.html:124
+#: tamplates/adminapp/pages/mailbox/mainemaillayout.html:40
+#: tamplates/adminapp/pages/mailbox/viewemailhook.html:40
+#: tamplates/adminapp/pages/mailbox/viewemailtemplate.html:40
+msgid "Back"
+msgstr "Back"
+
+#: tamplates/adminapp/pages/examples/addsettings.html:106
+#: tamplates/adminapp/pages/examples/addsettings.html:107
+#: tamplates/adminapp/pages/examples/addsociallinks.html:185
+#: tamplates/adminapp/pages/examples/cmdpageview.html:64
+#: tamplates/adminapp/pages/examples/editsettings.html:112
+#: tamplates/adminapp/pages/examples/viewgeneralsettings.html:52
+#: tamplates/adminapp/pages/forms/editeditors.html:97
+#: tamplates/adminapp/pages/forms/editors.html:89
+#: tamplates/adminapp/pages/forms/editors.html:90
+#: tamplates/adminapp/pages/mailbox/addemailhook.html:125
+#: tamplates/adminapp/pages/mailbox/addemailhook.html:126
+#: tamplates/adminapp/pages/mailbox/addmainemaillayout.html:133
+#: tamplates/adminapp/pages/mailbox/addmainemaillayout.html:134
+#: tamplates/adminapp/pages/mailbox/editemailhook.html:126
+#: tamplates/adminapp/pages/mailbox/editmainemaillayout.html:133
+#: tamplates/adminapp/pages/mailbox/mailbox.html:191
+#: tamplates/adminapp/pages/mailbox/mailbox.html:192
+#: tamplates/adminapp/pages/mailbox/mainemaillayout.html:51
+#: tamplates/adminapp/pages/mailbox/viewemailhook.html:51
+#: tamplates/adminapp/pages/tables/cmspagestables.html:68
+#: tamplates/adminapp/pages/tables/simple2.html:110
+#: tamplates/adminapp/pages/tables/simple2.html:246
+#: tamplates/adminapp/pages/tables/simple2.html:247
+msgid "Title"
+msgstr "Title"
+
+#: tamplates/adminapp/pages/examples/addsettings.html:123
+#: tamplates/adminapp/pages/examples/editsettings.html:130
+#: tamplates/adminapp/pages/examples/viewgeneralsettings.html:76
+#: tamplates/adminapp/pages/tables/simple2.html:263
+msgid "Field Type"
+msgstr "Field Type"
+
+#: tamplates/adminapp/pages/examples/addsettings.html:125
+#: tamplates/adminapp/pages/examples/editsettings.html:133
+#: tamplates/adminapp/pages/examples/editsettings.html:136
+#: tamplates/adminapp/pages/tables/simple2.html:265
+msgid "Text"
+msgstr "Text"
+
+#: tamplates/adminapp/pages/examples/addsettings.html:126
+#: tamplates/adminapp/pages/examples/editsettings.html:134
+#: tamplates/adminapp/pages/examples/editsettings.html:137
+#: tamplates/adminapp/pages/tables/simple2.html:266
+msgid "Yes/No"
+msgstr "Yes/No"
+
+#: tamplates/adminapp/pages/examples/addsettings.html:175
+#: tamplates/adminapp/pages/examples/editsettings.html:193
+#: tamplates/adminapp/pages/tables/simple2.html:164
+msgid "Will be replaced by website title from the admin settings."
+msgstr "Will be replaced by website title from the admin settings."
+
+#: tamplates/adminapp/pages/examples/addsettings.html:180
+#: tamplates/adminapp/pages/examples/editsettings.html:198
+#: tamplates/adminapp/pages/tables/simple2.html:169
+msgid "Will be replaced by admin email from the admin settings."
+msgstr "Will be replaced by admin email from the admin settings."
+
+#: tamplates/adminapp/pages/examples/addsettings.html:185
+#: tamplates/adminapp/pages/examples/editsettings.html:203
+#: tamplates/adminapp/pages/tables/simple2.html:174
+msgid "Will be replaced by email from the admin settings."
+msgstr "Will be replaced by email from the admin settings."
+
+#: tamplates/adminapp/pages/examples/addsettings.html:190
+#: tamplates/adminapp/pages/examples/editsettings.html:208
+#: tamplates/adminapp/pages/tables/simple2.html:179
+msgid "Will be replaced by Owner name from admin settings."
+msgstr "Will be replaced by Owner name from admin settings."
+
+#: tamplates/adminapp/pages/examples/addsettings.html:195
+#: tamplates/adminapp/pages/examples/editsettings.html:213
+#: tamplates/adminapp/pages/tables/simple2.html:184
+msgid "Will be replaced by phone number from admin settings."
+msgstr "Will be replaced by phone number from admin settings."
+
+#: tamplates/adminapp/pages/examples/addsettings.html:200
+#: tamplates/adminapp/pages/examples/editsettings.html:218
+#: tamplates/adminapp/pages/tables/simple2.html:189
+msgid "Will be replaced by admin page limit from admin settings."
+msgstr "Will be replaced by admin page limit from admin settings."
+
+#: tamplates/adminapp/pages/examples/addsettings.html:205
+#: tamplates/adminapp/pages/examples/editsettings.html:223
+#: tamplates/adminapp/pages/tables/simple2.html:194
+#, fuzzy
+#| msgid "Will be replaced by admin page limit from admin settings."
+msgid "Will be replaced by front page limit from admin settings."
+msgstr "Will be replaced by admin page limit from admin settings."
+
+# msgid "Will be replaced by front page limit from admin settings."
+# msgstr "Will be replaced by front page limit from admin settings."
+#: tamplates/adminapp/pages/examples/addsettings.html:210
+#: tamplates/adminapp/pages/examples/editsettings.html:228
+#: tamplates/adminapp/pages/tables/simple2.html:199
+msgid "Will be replaced by admin date format from admin settings."
+msgstr "Will be replaced by admin date format from admin settings."
+
+#: tamplates/adminapp/pages/examples/addsettings.html:215
+#: tamplates/adminapp/pages/examples/editsettings.html:233
+#: tamplates/adminapp/pages/tables/simple2.html:204
+msgid "Will be replaced by admin date time format from admin settings."
+msgstr "Will be replaced by admin date time format from admin settings."
+
+#: tamplates/adminapp/pages/examples/addsettings.html:220
+#: tamplates/adminapp/pages/examples/editsettings.html:238
+#: tamplates/adminapp/pages/tables/simple2.html:209
+msgid "Will be replaced by front date format from admin settings."
+msgstr "Will be replaced by front date format from admin settings."
+
+#: tamplates/adminapp/pages/examples/addsettings.html:225
+#: tamplates/adminapp/pages/examples/addsettings.html:230
+#: tamplates/adminapp/pages/examples/addsettings.html:235
+#: tamplates/adminapp/pages/examples/addsettings.html:240
+#: tamplates/adminapp/pages/examples/editsettings.html:243
+#: tamplates/adminapp/pages/examples/editsettings.html:248
+#: tamplates/adminapp/pages/examples/editsettings.html:253
+#: tamplates/adminapp/pages/examples/editsettings.html:258
+#: tamplates/adminapp/pages/tables/simple2.html:214
+#: tamplates/adminapp/pages/tables/simple2.html:219
+#: tamplates/adminapp/pages/tables/simple2.html:224
+#: tamplates/adminapp/pages/tables/simple2.html:229
+msgid "Will be replaced by front date time format from admin settings."
+msgstr "Will be replaced by front date time format from admin settings."
+
+#: tamplates/adminapp/pages/examples/addsociallinks.html:158
+msgid "Manage Social"
+msgstr "Manage Social"
+
+#: tamplates/adminapp/pages/examples/addsociallinks.html:158
+msgid "links Here you can manage the social website links"
+msgstr "links Here you can manage the social website links"
+
+#: tamplates/adminapp/pages/examples/addsociallinks.html:164
+msgid "Social"
+msgstr "Social"
+
+#: tamplates/adminapp/pages/examples/addsociallinks.html:186
+msgid "URL"
+msgstr "URL"
+
+#: tamplates/adminapp/pages/examples/addsociallinks.html:187
+msgid "Icon"
+msgstr "Icon"
+
+#: tamplates/adminapp/pages/examples/addsociallinks.html:245
+msgid "Will be replaced by facebook url from the admin settings."
+msgstr "Will be replaced by facebook url from the admin settings."
+
+#: tamplates/adminapp/pages/examples/addsociallinks.html:250
+#, fuzzy
+#| msgid "Will be replaced by youtube url from the admin settings."
+msgid "Will be replaced by google plus url from the admin settings."
+msgstr "Will be replaced by youtube url from the admin settings."
+
+#: tamplates/adminapp/pages/examples/addsociallinks.html:255
+msgid "Will be replaced by twitter url from the admin settings."
+msgstr "Will be replaced by twitter url from the admin settings."
+
+# msgid "Will be replaced by twitter url from the admin settings."
+# msgstr "Will be replaced by twitter url from the admin settings."
+#: tamplates/adminapp/pages/examples/addsociallinks.html:260
+msgid "Will be replaced by linkedin url from the admin settings."
+msgstr "Will be replaced by linkedin url from the admin settings."
+
+#: tamplates/adminapp/pages/examples/addsociallinks.html:265
+msgid "Will be replaced by youtube url from the admin settings."
+msgstr "Will be replaced by youtube url from the admin settings."
+
+#: tamplates/adminapp/pages/examples/adduser.html:80
+msgid "General Form"
+msgstr "General Form"
+
+#: tamplates/adminapp/pages/examples/adduser.html:85
+#: tamplates/adminapp/pages/examples/edituser.html:71
+#: tamplates/adminapp/pages/examples/viewuser.html:31
+msgid "Admin user"
+msgstr "Admin user"
+
+#: tamplates/adminapp/pages/examples/adduser.html:86
+msgid "Add User"
+msgstr "Add User"
+
+#: tamplates/adminapp/pages/examples/adduser.html:102
+#: tamplates/adminapp/pages/examples/edituser.html:88
+msgid "Quick Example"
+msgstr "Quick Example"
+
+#: tamplates/adminapp/pages/examples/adduser.html:113
+#: tamplates/adminapp/pages/examples/adduser.html:114
+#: tamplates/adminapp/pages/examples/edituser.html:99
+#: tamplates/adminapp/pages/examples/profile.html:135
+#: tamplates/adminapp/pages/examples/viewuser.html:52
+msgid "Username"
+msgstr "Username"
+
+#: tamplates/adminapp/pages/examples/adduser.html:118
+#: tamplates/adminapp/pages/examples/edituser.html:122
+#: tamplates/adminapp/pages/examples/profile.html:140
+msgid "Date Of Birth"
+msgstr "Date Of Birth"
+
+#: tamplates/adminapp/pages/examples/adduser.html:120
+msgid "MM/DD/YYYY"
+msgstr "MM/DD/YYYY"
+
+#: tamplates/adminapp/pages/examples/adduser.html:129
+#: tamplates/adminapp/pages/examples/adduser.html:130
+#: tamplates/adminapp/pages/examples/edituser.html:110
+#: tamplates/adminapp/pages/examples/viewuser.html:56
+msgid "First Name"
+msgstr "First Name"
+
+#: tamplates/adminapp/pages/examples/adduser.html:133
+#: tamplates/adminapp/pages/examples/adduser.html:134
+#: tamplates/adminapp/pages/examples/edituser.html:114
+#: tamplates/adminapp/pages/examples/viewuser.html:60
+msgid "Last Name"
+msgstr "Last Name"
+
+#: tamplates/adminapp/pages/examples/adduser.html:140
+#: tamplates/adminapp/pages/examples/edituser.html:103
+msgid "Email address"
+msgstr "Email address"
+
+#: tamplates/adminapp/pages/examples/adduser.html:141
+msgid "Enter email"
+msgstr "Enter email"
+
+#: tamplates/adminapp/pages/examples/adduser.html:144
+#: tamplates/adminapp/pages/examples/adduser.html:145
+#: tamplates/adminapp/pages/examples/edituser.html:129
+#: tamplates/adminapp/pages/examples/viewuser.html:68
+msgid "Mobile"
+msgstr "Mobile"
+
+#: tamplates/adminapp/pages/examples/adduser.html:152
+#: tamplates/adminapp/pages/examples/cmdpageview.html:107
+#: tamplates/adminapp/pages/examples/cmdpageview.html:112
+#: tamplates/adminapp/pages/examples/edituser.html:135
+#: tamplates/adminapp/pages/mailbox/addemailhook.html:147
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:174
+#: tamplates/adminapp/pages/mailbox/editemailhook.html:148
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:179
+#: tamplates/adminapp/pages/mailbox/mailbox.html:213
+#: tamplates/adminapp/pages/mailbox/mainemaillayout.html:66
+#: tamplates/adminapp/pages/mailbox/read-mail.html:261
+#: tamplates/adminapp/pages/mailbox/viewemailhook.html:69
+#: tamplates/adminapp/pages/mailbox/viewemailhook.html:74
+#: tamplates/adminapp/pages/mailbox/viewemailtemplate.html:75
+#: tamplates/adminapp/pages/mailbox/viewemailtemplate.html:80
+#: tamplates/adminapp/pages/tables/simple.html:71
+msgid "Status"
+msgstr "Status"
+
+#: tamplates/adminapp/pages/examples/adduser.html:154
+#: tamplates/adminapp/pages/examples/edituser.html:138
+#: tamplates/adminapp/pages/examples/edituser.html:141
+#: tamplates/adminapp/pages/mailbox/addemailhook.html:149
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:176
+#: tamplates/adminapp/pages/mailbox/editemailhook.html:151
+#: tamplates/adminapp/pages/mailbox/editemailhook.html:156
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:182
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:185
+#: tamplates/adminapp/pages/mailbox/mailbox.html:215
+#: tamplates/adminapp/pages/mailbox/read-mail.html:263
+#: tamplates/adminapp/pages/mailbox/viewemailhook.html:70
+#: tamplates/adminapp/pages/tables/simple.html:83
+msgid "Active"
+msgstr "Active"
+
+#: tamplates/adminapp/pages/examples/adduser.html:155
+#: tamplates/adminapp/pages/examples/edituser.html:139
+#: tamplates/adminapp/pages/examples/edituser.html:142
+#: tamplates/adminapp/pages/mailbox/addemailhook.html:150
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:177
+#: tamplates/adminapp/pages/mailbox/editemailhook.html:152
+#: tamplates/adminapp/pages/mailbox/editemailhook.html:157
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:183
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:186
+#: tamplates/adminapp/pages/mailbox/mailbox.html:216
+#: tamplates/adminapp/pages/mailbox/read-mail.html:264
+#: tamplates/adminapp/pages/mailbox/viewemailhook.html:75
+#: tamplates/adminapp/pages/tables/simple.html:85
+msgid "Inactive"
+msgstr "Inactive"
+
+#: tamplates/adminapp/pages/examples/adduser.html:159
+#: tamplates/adminapp/pages/examples/edituser.html:147
+#: tamplates/adminapp/pages/forms/editeditors.html:137
+#: tamplates/adminapp/pages/forms/editors.html:128
+msgid "File input"
+msgstr "File input"
+
+#: tamplates/adminapp/pages/examples/adduser.html:163
+#: tamplates/adminapp/pages/examples/edituser.html:152
+#: tamplates/adminapp/pages/forms/editeditors.html:142
+#: tamplates/adminapp/pages/forms/editors.html:132
+msgid "Choose file"
+msgstr "Choose file"
+
+#: tamplates/adminapp/pages/examples/adduser.html:170
+#: tamplates/adminapp/pages/examples/adduser.html:171
+#: tamplates/adminapp/pages/examples/changepass.html:84
+#: tamplates/adminapp/pages/examples/login.html:85
+#: tamplates/adminapp/pages/examples/profile.html:164
+#: tamplates/adminapp/pages/examples/profile.html:165
+msgid "Password"
+msgstr "Password"
+
+#: tamplates/adminapp/pages/examples/adduser.html:174
+#: tamplates/adminapp/pages/examples/adduser.html:175
+#: tamplates/adminapp/pages/examples/changepass.html:92
+#: tamplates/adminapp/pages/examples/profile.html:169
+#: tamplates/adminapp/pages/examples/profile.html:170
+msgid "Confirm Password"
+msgstr "Confirm Password"
+
+#: tamplates/adminapp/pages/examples/changepass.html:8
+#: tamplates/adminapp/pages/examples/forgetpass.html:8
+msgid "AdminLTE 3 | Forget Password"
+msgstr "AdminLTE 3 | Forget Password"
+
+#: tamplates/adminapp/pages/examples/changepass.html:40
+#: tamplates/adminapp/pages/examples/changepass.html:42
+#: tamplates/adminapp/pages/examples/forgetpass.html:44
+#: tamplates/adminapp/pages/examples/login.html:42
+msgid "Admin LTE"
+msgstr "Admin LTE"
+
+#: tamplates/adminapp/pages/examples/changepass.html:77
+#: tamplates/adminapp/pages/examples/forgetpass.html:79
+msgid "Forgot Password ?"
+msgstr "Forgot Password ?"
+
+#: tamplates/adminapp/pages/examples/changepass.html:77
+#: tamplates/adminapp/pages/examples/forgetpass.html:79
+msgid "Enter your e-mail address below to reset your password."
+msgstr "Enter your e-mail address below to reset your password."
+
+#: tamplates/adminapp/pages/examples/changepasserror.html:8
+msgid "AdminLTE 3 | 404 Page not found"
+msgstr "AdminLTE 3 | 404 Page not found"
+
+#: tamplates/adminapp/pages/examples/changepasserror.html:45
+msgid "return to Login"
+msgstr "return to Login"
+
+#: tamplates/adminapp/pages/examples/cmdpageview.html:38
+#: tamplates/adminapp/pages/forms/editeditors.html:65
+#: tamplates/adminapp/pages/forms/editors.html:57
+#: tamplates/adminapp/pages/tables/cmspagestables.html:33
+msgid "Manage Page"
+msgstr "Manage Page"
+
+#: tamplates/adminapp/pages/examples/cmdpageview.html:38
+msgid "Page Detail"
+msgstr "Page Detail"
+
+#: tamplates/adminapp/pages/examples/cmdpageview.html:43
+#: tamplates/adminapp/pages/forms/editeditors.html:70
+#: tamplates/adminapp/pages/forms/editors.html:62
+#: tamplates/adminapp/pages/tables/cmspagestables.html:38
+msgid "Pages"
+msgstr "Pages"
+
+#: tamplates/adminapp/pages/examples/cmdpageview.html:44
+msgid "View Page"
+msgstr "View Page"
+
+#: tamplates/adminapp/pages/examples/cmdpageview.html:57
+msgid "CMS Page Detail"
+msgstr "CMS Page Detail"
+
+#: tamplates/adminapp/pages/examples/cmdpageview.html:68
+#: tamplates/adminapp/pages/forms/editeditors.html:106
+#: tamplates/adminapp/pages/forms/editors.html:98
+#: tamplates/adminapp/pages/forms/editors.html:99
+msgid "Sub Title"
+msgstr "Sub Title"
+
+#: tamplates/adminapp/pages/examples/cmdpageview.html:72
+#: tamplates/adminapp/pages/forms/editeditors.html:117
+#: tamplates/adminapp/pages/forms/editors.html:109
+#: tamplates/adminapp/pages/forms/editors.html:110
+#: tamplates/adminapp/pages/tables/cmspagestables.html:69
+msgid "Slug"
+msgstr "Slug"
+
+#: tamplates/adminapp/pages/examples/cmdpageview.html:76
+#: tamplates/adminapp/pages/forms/editeditors.html:128
+#: tamplates/adminapp/pages/forms/editors.html:120
+#: tamplates/adminapp/pages/forms/editors.html:121
+#: tamplates/adminapp/pages/tables/cmspagestables.html:70
+msgid "Short Description"
+msgstr "Short Description"
+
+#: tamplates/adminapp/pages/examples/cmdpageview.html:80
+#: tamplates/adminapp/pages/forms/editeditors.html:100
+#: tamplates/adminapp/pages/forms/editors.html:92
+#: tamplates/adminapp/pages/forms/editors.html:93
+msgid "Meta Title"
+msgstr "Meta Title"
+
+#: tamplates/adminapp/pages/examples/cmdpageview.html:84
+#: tamplates/adminapp/pages/forms/editeditors.html:110
+#: tamplates/adminapp/pages/forms/editors.html:102
+#: tamplates/adminapp/pages/forms/editors.html:103
+msgid "Meta Keyword"
+msgstr "Meta Keyword"
+
+#: tamplates/adminapp/pages/examples/cmdpageview.html:88
+#: tamplates/adminapp/pages/forms/editeditors.html:120
+#: tamplates/adminapp/pages/forms/editors.html:112
+#: tamplates/adminapp/pages/forms/editors.html:113
+msgid "Meta Description"
+msgstr "Meta Description"
+
+#: tamplates/adminapp/pages/examples/cmdpageview.html:92
+#: tamplates/adminapp/pages/examples/viewgeneralsettings.html:80
+#: tamplates/adminapp/pages/examples/viewuser.html:80
+#: tamplates/adminapp/pages/mailbox/mainemaillayout.html:56
+#: tamplates/adminapp/pages/mailbox/mainemaillayout.html:85
+#: tamplates/adminapp/pages/mailbox/viewemailhook.html:59
+#: tamplates/adminapp/pages/mailbox/viewemailtemplate.html:65
+#: tamplates/adminapp/pages/tables/cmspagestables.html:71
+msgid "Created"
+msgstr "Created"
+
+#: tamplates/adminapp/pages/examples/cmdpageview.html:96
+#: tamplates/adminapp/pages/examples/viewgeneralsettings.html:84
+#: tamplates/adminapp/pages/examples/viewuser.html:89
+#: tamplates/adminapp/pages/mailbox/mainemaillayout.html:60
+#: tamplates/adminapp/pages/mailbox/mainemaillayout.html:86
+#: tamplates/adminapp/pages/mailbox/viewemailhook.html:63
+#: tamplates/adminapp/pages/mailbox/viewemailtemplate.html:69
+msgid "Modified"
+msgstr "Modified"
+
+#: tamplates/adminapp/pages/examples/cmdpageview.html:100
+msgid "Image"
+msgstr "Image"
+
+#: tamplates/adminapp/pages/examples/cmdpageview.html:108
+#: tamplates/adminapp/pages/examples/viewuser.html:96
+msgid "YES"
+msgstr "YES"
+
+#: tamplates/adminapp/pages/examples/cmdpageview.html:113
+#: tamplates/adminapp/pages/examples/viewuser.html:101
+#: tamplates/adminapp/pages/mailbox/viewemailtemplate.html:81
+msgid "NO"
+msgstr "NO"
+
+#: tamplates/adminapp/pages/examples/cmdpageview.html:117
+#: tamplates/adminapp/pages/mailbox/addemailhook.html:141
+#: tamplates/adminapp/pages/mailbox/addemailhook.html:142
+#: tamplates/adminapp/pages/mailbox/editemailhook.html:142
+#: tamplates/adminapp/pages/mailbox/mailbox.html:207
+#: tamplates/adminapp/pages/mailbox/mailbox.html:208
+#: tamplates/adminapp/pages/mailbox/read-mail.html:237
+#: tamplates/adminapp/pages/mailbox/read-mail.html:238
+#: tamplates/adminapp/pages/mailbox/viewemailhook.html:79
+#: tamplates/adminapp/pages/mailbox/viewemailtemplate.html:85
+msgid "Description"
+msgstr "Description"
+
+#: tamplates/adminapp/pages/examples/editsettings.html:79
+#: tamplates/header.html:114
+msgid "General Setting"
+msgstr "General Setting"
+
+#: tamplates/adminapp/pages/examples/editsettings.html:85
+msgid "Edit Setting"
+msgstr "Edit Setting"
+
+#: tamplates/adminapp/pages/examples/edituser.html:72
+msgid "Edit User"
+msgstr "Edit User"
+
+#: tamplates/adminapp/pages/examples/favandlogo.html:129
+msgid "Manage Theme images"
+msgstr "Manage Theme images"
+
+#: tamplates/adminapp/pages/examples/favandlogo.html:129
+msgid "Here you can manage the logo and fav icons Option"
+msgstr "Here you can manage the logo and fav icons Option"
+
+#: tamplates/adminapp/pages/examples/favandlogo.html:135
+msgid "Logos"
+msgstr "Logos"
+
+#: tamplates/adminapp/pages/examples/favandlogo.html:146
+msgid "Theme Options"
+msgstr "Theme Options"
+
+#: tamplates/adminapp/pages/examples/favandlogo.html:215
+#: tamplates/adminapp/pages/mailbox/addmainemaillayout.html:170
+#: tamplates/adminapp/pages/mailbox/editmainemaillayout.html:171
+#: tamplates/adminapp/pages/mailbox/listmainemaillayout.html:195
+msgid "Will be replaced by logo from the admin settings."
+msgstr "Will be replaced by logo from the admin settings."
+
+#: tamplates/adminapp/pages/examples/favandlogo.html:220
+msgid "Will be replaced by favicon icon image from the admin settings."
+msgstr "Will be replaced by favicon icon image from the admin settings."
+
+#: tamplates/adminapp/pages/examples/forgetpass.html:86
+#: tamplates/adminapp/pages/examples/login.html:77
+#: tamplates/adminapp/pages/examples/profile.html:154
+#: tamplates/adminapp/pages/examples/viewuser.html:72
+#: tamplates/adminapp/pages/tables/simple.html:70
+msgid "Email"
+msgstr "Email"
+
+#: tamplates/adminapp/pages/examples/login.html:8
+msgid "AdminLTE 3 | Log in"
+msgstr "AdminLTE 3 | Log in"
+
+#: tamplates/adminapp/pages/examples/login.html:72
+msgid "Sign in to start your session"
+msgstr "Sign in to start your session"
+
+#: tamplates/adminapp/pages/examples/login.html:97
+msgid "Remember Me"
+msgstr "Remember Me"
+
+#: tamplates/adminapp/pages/examples/login.html:103
+msgid "Sign In"
+msgstr "Sign In"
+
+#: tamplates/adminapp/pages/examples/login.html:110
+msgid "I forgot my password"
+msgstr "I forgot my password"
+
+#: tamplates/adminapp/pages/examples/profile.html:101
+#: tamplates/adminapp/pages/examples/profile.html:107
+#: tamplates/adminapp/pages/examples/profile.html:124
+msgid "Profile"
+msgstr "Profile"
+
+#: tamplates/adminapp/pages/examples/profile.html:106
+#: tamplates/adminapp/pages/tables/simple.html:39
+msgid "Admin Users"
+msgstr "Admin Users"
+
+#: tamplates/adminapp/pages/examples/profile.html:148
+msgid "Phone Number"
+msgstr "Phone Number"
+
+#: tamplates/adminapp/pages/examples/profile.html:216
+msgid "Cancel"
+msgstr "Cancel"
+
+#: tamplates/adminapp/pages/examples/viewgeneralsettings.html:24
+#: tamplates/adminapp/pages/examples/viewgeneralsettings.html:43
+msgid "Setting Detail"
+msgstr "Setting Detail"
+
+#: tamplates/adminapp/pages/examples/viewgeneralsettings.html:30
+msgid "View Setting"
+msgstr "View Setting"
+
+#: tamplates/adminapp/pages/examples/viewgeneralsettings.html:56
+msgid "Manager"
+msgstr "Manager"
+
+#: tamplates/adminapp/pages/examples/viewuser.html:26
+#: tamplates/adminapp/pages/examples/viewuser.html:45
+msgid "User Detail"
+msgstr "User Detail"
+
+#: tamplates/adminapp/pages/examples/viewuser.html:32
+msgid "View User"
+msgstr "View User"
+
+#: tamplates/adminapp/pages/examples/viewuser.html:64
+msgid "Account Id"
+msgstr "Account Id"
+
+#: tamplates/adminapp/pages/examples/viewuser.html:76
+msgid "Dob"
+msgstr "Dob"
+
+#: tamplates/adminapp/pages/examples/viewuser.html:85
+msgid "Profile Image"
+msgstr "Profile Image"
+
+#: tamplates/adminapp/pages/examples/viewuser.html:95
+#: tamplates/adminapp/pages/examples/viewuser.html:100
+msgid "Is Verified"
+msgstr "Is Verified"
+
+#: tamplates/adminapp/pages/forms/editeditors.html:65
+#: tamplates/adminapp/pages/forms/editors.html:57
+msgid "Add New page"
+msgstr "Add New page"
+
+#: tamplates/adminapp/pages/forms/editeditors.html:71
+msgid "Edit Page"
+msgstr "Edit Page"
+
+#: tamplates/adminapp/pages/forms/editeditors.html:85
+#: tamplates/adminapp/pages/forms/editors.html:63
+#: tamplates/adminapp/pages/forms/editors.html:77
+msgid "Add Page"
+msgstr "Add Page"
+
+#: tamplates/adminapp/pages/forms/editors.html:144
+msgid "Place some text here"
+msgstr "Place some text here"
+
+#: tamplates/adminapp/pages/mailbox/addemailhook.html:96
+#: tamplates/adminapp/pages/mailbox/editemailhook.html:96
+#: tamplates/adminapp/pages/mailbox/mailbox.html:95
+#: tamplates/adminapp/pages/mailbox/read-mail.html:96
+msgid "Manage Email Hook"
+msgstr "Manage Email Hook"
+
+#: tamplates/adminapp/pages/mailbox/addemailhook.html:96
+#: tamplates/adminapp/pages/mailbox/editemailhook.html:96
+msgid "Add New email hook"
+msgstr "Add New email hook"
+
+#: tamplates/adminapp/pages/mailbox/addemailhook.html:101
+#: tamplates/adminapp/pages/mailbox/editemailhook.html:101
+#: tamplates/adminapp/pages/mailbox/mailbox.html:100
+#: tamplates/adminapp/pages/mailbox/viewemailhook.html:25
+msgid "Email hooks"
+msgstr "Email hooks"
+
+#: tamplates/adminapp/pages/mailbox/addemailhook.html:102
+msgid "Add Email hook"
+msgstr "Add Email hook"
+
+#: tamplates/adminapp/pages/mailbox/addemailhook.html:115
+#: tamplates/adminapp/pages/mailbox/editemailhook.html:115
+msgid "Add Email Hook"
+msgstr "Add Email Hook"
+
+#: tamplates/adminapp/pages/mailbox/addemailhook.html:131
+#: tamplates/adminapp/pages/mailbox/addemailhook.html:132
+#: tamplates/adminapp/pages/mailbox/editemailhook.html:132
+#: tamplates/adminapp/pages/mailbox/mailbox.html:197
+#: tamplates/adminapp/pages/mailbox/mailbox.html:198
+#: tamplates/adminapp/pages/mailbox/viewemailhook.html:55
+msgid "Hook"
+msgstr "Hook"
+
+#: tamplates/adminapp/pages/mailbox/addemailhook.html:135
+#: tamplates/adminapp/pages/mailbox/editemailhook.html:136
+#: tamplates/adminapp/pages/mailbox/mailbox.html:201
+msgid ""
+"No space, separate each word with underscore. (if you want auto generated "
+"then please leave blank)"
+msgstr ""
+"No space, separate each word with underscore. (if you want auto generated "
+"then please leave blank)"
+
+#: tamplates/adminapp/pages/mailbox/addemailhook.html:169
+#: tamplates/adminapp/pages/mailbox/editemailhook.html:178
+msgid "Last updated email hooks"
+msgstr "Last updated email hooks"
+
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:105
+#: tamplates/adminapp/pages/mailbox/addmainemaillayout.html:105
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:105
+#: tamplates/adminapp/pages/mailbox/editmainemaillayout.html:105
+msgid "Manage Email Template"
+msgstr "Manage Email Template"
+
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:105
+#: tamplates/adminapp/pages/mailbox/addmainemaillayout.html:105
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:105
+msgid "Add New email template"
+msgstr "Add New email template"
+
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:110
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:110
+#: tamplates/adminapp/pages/mailbox/read-mail.html:101
+#: tamplates/adminapp/pages/mailbox/viewemailtemplate.html:25
+msgid "Email templates"
+msgstr "Email templates"
+
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:111
+msgid "Add Email template"
+msgstr "Add Email template"
+
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:123
+#: tamplates/adminapp/pages/mailbox/addmainemaillayout.html:123
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:123
+msgid "Add Email Template"
+msgstr "Add Email Template"
+
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:132
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:133
+#: tamplates/adminapp/pages/mailbox/read-mail.html:220
+#: tamplates/adminapp/pages/mailbox/viewemailtemplate.html:51
+msgid "Email Hook"
+msgstr "Email Hook"
+
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:142
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:143
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:147
+#: tamplates/adminapp/pages/mailbox/mainemaillayout.html:84
+#: tamplates/adminapp/pages/mailbox/read-mail.html:231
+#: tamplates/adminapp/pages/mailbox/read-mail.html:232
+#: tamplates/adminapp/pages/mailbox/viewemailtemplate.html:55
+msgid "Subject"
+msgstr "Subject"
+
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:151
+msgid "Write Something Here."
+msgstr "Write Something Here."
+
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:159
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:160
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:164
+#: tamplates/adminapp/pages/mailbox/read-mail.html:243
+#: tamplates/adminapp/pages/mailbox/read-mail.html:244
+msgid "Footer Text"
+msgstr "Footer Text"
+
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:165
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:170
+#: tamplates/adminapp/pages/mailbox/read-mail.html:251
+#: tamplates/adminapp/pages/mailbox/viewemailtemplate.html:60
+msgid "Email Preference"
+msgstr "Email Preference"
+
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:167
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:172
+#: tamplates/adminapp/pages/mailbox/mainemaillayout.html:39
+msgid "Main Email Layout"
+msgstr "Main Email Layout"
+
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:201
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:212
+#: tamplates/adminapp/pages/mailbox/read-mail.html:193
+msgid ""
+"For each email hook that would be added to the sytem, make sure to follow "
+"these rules:"
+msgstr ""
+"For each email hook that would be added to the sytem, make sure to follow "
+"these rules:"
+
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:204
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:208
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:212
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:215
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:219
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:223
+#: tamplates/adminapp/pages/mailbox/read-mail.html:196
+#: tamplates/adminapp/pages/mailbox/read-mail.html:200
+#: tamplates/adminapp/pages/mailbox/read-mail.html:204
+msgid "Use"
+msgstr "Use"
+
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:205
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:216
+#: tamplates/adminapp/pages/mailbox/read-mail.html:197
+msgid ""
+"on the subject or message to print application name defined by admin "
+"settings."
+msgstr ""
+"on the subject or message to print application name defined by admin "
+"settings."
+
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:209
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:220
+#: tamplates/adminapp/pages/mailbox/read-mail.html:201
+msgid "on the subject or message to print user email."
+msgstr "on the subject or message to print user email."
+
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:213
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:224
+#: tamplates/adminapp/pages/mailbox/read-mail.html:205
+msgid "on the subject or message to print user name."
+msgstr "on the subject or message to print user name."
+
+#: tamplates/adminapp/pages/mailbox/addemailtemplate.html:215
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:226
+#: tamplates/adminapp/pages/mailbox/read-mail.html:207
+msgid "Make sure the message contain"
+msgstr "Make sure the message contain"
+
+#: tamplates/adminapp/pages/mailbox/addmainemaillayout.html:110
+#: tamplates/adminapp/pages/mailbox/editmainemaillayout.html:110
+#: tamplates/adminapp/pages/mailbox/listmainemaillayout.html:100
+#: tamplates/adminapp/pages/mailbox/mainemaillayout.html:25
+msgid "Email preferences"
+msgstr "Email preferences"
+
+#: tamplates/adminapp/pages/mailbox/addmainemaillayout.html:111
+msgid "Add Email preferences"
+msgstr "Add Email preferences"
+
+#: tamplates/adminapp/pages/mailbox/addmainemaillayout.html:139
+#: tamplates/adminapp/pages/mailbox/addmainemaillayout.html:140
+#: tamplates/adminapp/pages/mailbox/editmainemaillayout.html:139
+#: tamplates/adminapp/pages/mailbox/mainemaillayout.html:75
+msgid "Layout Html"
+msgstr "Layout Html"
+
+#: tamplates/adminapp/pages/mailbox/addmainemaillayout.html:164
+#: tamplates/adminapp/pages/mailbox/editmainemaillayout.html:165
+#: tamplates/adminapp/pages/mailbox/listmainemaillayout.html:189
+msgid ""
+"For each email style or email preference that would be added to the system, "
+"make sure it has these hooks:"
+msgstr ""
+"For each email style or email preference that would be added to the system, "
+"make sure it has these hooks:"
+
+#: tamplates/adminapp/pages/mailbox/addmainemaillayout.html:175
+#: tamplates/adminapp/pages/mailbox/editmainemaillayout.html:176
+#: tamplates/adminapp/pages/mailbox/listmainemaillayout.html:200
+msgid "Will be replaced by application name from admin settings."
+msgstr "Will be replaced by application name from admin settings."
+
+#: tamplates/adminapp/pages/mailbox/addmainemaillayout.html:180
+#: tamplates/adminapp/pages/mailbox/editmainemaillayout.html:181
+#: tamplates/adminapp/pages/mailbox/listmainemaillayout.html:205
+msgid "Will be replaced by email message from email hook settings."
+msgstr "Will be replaced by email message from email hook settings."
+
+#: tamplates/adminapp/pages/mailbox/addmainemaillayout.html:185
+#: tamplates/adminapp/pages/mailbox/editmainemaillayout.html:186
+#: tamplates/adminapp/pages/mailbox/listmainemaillayout.html:210
+msgid "Will be replaced by email footer from email hook settings."
+msgstr "Will be replaced by email footer from email hook settings."
+
+#: tamplates/adminapp/pages/mailbox/editemailhook.html:102
+msgid "Edit Email hook"
+msgstr "Edit Email hook"
+
+#: tamplates/adminapp/pages/mailbox/editemailtemplate.html:111
+msgid "Edit Email template"
+msgstr "Edit Email template"
+
+#: tamplates/adminapp/pages/mailbox/editmainemaillayout.html:105
+msgid "Edit New email template"
+msgstr "Edit New email template"
+
+#: tamplates/adminapp/pages/mailbox/editmainemaillayout.html:111
+msgid "Edit Email preferences"
+msgstr "Edit Email preferences"
+
+#: tamplates/adminapp/pages/mailbox/editmainemaillayout.html:123
+msgid "Edit Email Template"
+msgstr "Edit Email Template"
+
+#: tamplates/adminapp/pages/mailbox/listmainemaillayout.html:95
+msgid "Manage Email Preference"
+msgstr "Manage Email Preference"
+
+#: tamplates/adminapp/pages/mailbox/listmainemaillayout.html:95
+msgid "Here you can manage the email preferences"
+msgstr "Here you can manage the email preferences"
+
+#: tamplates/adminapp/pages/mailbox/listmainemaillayout.html:113
+msgid "List Email Preferences"
+msgstr "List Email Preferences"
+
+#: tamplates/adminapp/pages/mailbox/listmainemaillayout.html:118
+msgid "+ New Email preferences"
+msgstr "+ New Email preferences"
+
+#: tamplates/adminapp/pages/mailbox/mailbox.html:95
+#: tamplates/adminapp/pages/mailbox/read-mail.html:96
+msgid "Here you can manage the email hooks"
+msgstr "Here you can manage the email hooks"
+
+#: tamplates/adminapp/pages/mailbox/mailbox.html:113
+#: tamplates/adminapp/pages/mailbox/read-mail.html:114
+msgid "List Email Hooks"
+msgstr "List Email Hooks"
+
+#: tamplates/adminapp/pages/mailbox/mailbox.html:118
+msgid "+ New Email Hook"
+msgstr "+ New Email Hook"
+
+#: tamplates/adminapp/pages/mailbox/mailbox.html:183
+#: tamplates/adminapp/pages/mailbox/read-mail.html:213
+#: tamplates/adminapp/pages/tables/simple2.html:237
+msgid "Quick Start"
+msgstr "Quick Start"
+
+#: tamplates/adminapp/pages/mailbox/mainemaillayout.html:20
+#: tamplates/adminapp/pages/mailbox/viewemailhook.html:20
+#: tamplates/adminapp/pages/mailbox/viewemailtemplate.html:20
+msgid "Manage Email"
+msgstr "Manage Email"
+
+#: tamplates/adminapp/pages/mailbox/mainemaillayout.html:20
+#: tamplates/adminapp/pages/mailbox/viewemailhook.html:20
+#: tamplates/adminapp/pages/mailbox/viewemailtemplate.html:20
+msgid "Hook Email Hook Detail"
+msgstr "Hook Email Hook Detail"
+
+#: tamplates/adminapp/pages/mailbox/mainemaillayout.html:26
+msgid "View Email preferences"
+msgstr "View Email preferences"
+
+#: tamplates/adminapp/pages/mailbox/mainemaillayout.html:47
+#: tamplates/adminapp/pages/mailbox/mainemaillayout.html:83
+#: tamplates/adminapp/pages/mailbox/viewemailhook.html:47
+#: tamplates/adminapp/pages/mailbox/viewemailtemplate.html:47
+#: tamplates/adminapp/pages/tables/cmspagestables.html:67
+#: tamplates/adminapp/pages/tables/simple.html:68
+#: tamplates/adminapp/pages/tables/simple2.html:109
+msgid "ID"
+msgstr "ID"
+
+#: tamplates/adminapp/pages/mailbox/mainemaillayout.html:87
+#: tamplates/adminapp/pages/tables/cmspagestables.html:72
+#: tamplates/adminapp/pages/tables/simple.html:73
+#: tamplates/adminapp/pages/tables/simple2.html:113
+msgid "Actions"
+msgstr "Actions"
+
+#: tamplates/adminapp/pages/mailbox/read-mail.html:119
+msgid "+ New Email Template"
+msgstr "+ New Email Template"
+
+#: tamplates/adminapp/pages/mailbox/viewemailhook.html:26
+msgid "View Email hook"
+msgstr "View Email hook"
+
+#: tamplates/adminapp/pages/mailbox/viewemailtemplate.html:26
+msgid "View Email template"
+msgstr "View Email template"
+
+#: tamplates/adminapp/pages/mailbox/viewemailtemplate.html:76
+msgid "Yes"
+msgstr "Yes"
+
+#: tamplates/adminapp/pages/tables/cmspagestables.html:33
+msgid "Here you can manage the pages"
+msgstr "Here you can manage the pages"
+
+#: tamplates/adminapp/pages/tables/cmspagestables.html:54
+msgid "List Pages"
+msgstr "List Pages"
+
+#: tamplates/adminapp/pages/tables/cmspagestables.html:58
+msgid "+ New Page"
+msgstr "+ New Page"
+
+#: tamplates/adminapp/pages/tables/cmspagestables.html:87
+#: tamplates/adminapp/pages/tables/simple.html:92
+#: tamplates/adminapp/pages/tables/simple2.html:130
+msgid "Action"
+msgstr "Action"
+
+#: tamplates/adminapp/pages/tables/cmspagestables.html:93
+#: tamplates/adminapp/pages/tables/simple.html:98
+#: tamplates/adminapp/pages/tables/simple2.html:136
+msgid "View"
+msgstr "View"
+
+#: tamplates/adminapp/pages/tables/cmspagestables.html:94
+#: tamplates/adminapp/pages/tables/simple.html:99
+#: tamplates/adminapp/pages/tables/simple2.html:137
+msgid "Edit"
+msgstr "Edit"
+
+#: tamplates/adminapp/pages/tables/cmspagestables.html:95
+#: tamplates/adminapp/pages/tables/simple.html:100
+msgid "Delete"
+msgstr "Delete"
+
+#: tamplates/adminapp/pages/tables/simple.html:34
+msgid "Manage User"
+msgstr "Manage User"
+
+#: tamplates/adminapp/pages/tables/simple.html:54
+msgid "Responsive Hover Table"
+msgstr "Responsive Hover Table"
+
+#: tamplates/adminapp/pages/tables/simple.html:59
+msgid "+ New User"
+msgstr "+ New User"
+
+#: tamplates/adminapp/pages/tables/simple.html:69
+msgid "Name"
+msgstr "Name"
+
+#: tamplates/adminapp/pages/tables/simple.html:72
+msgid "Registered On"
+msgstr "Registered On"
+
+#: tamplates/adminapp/pages/tables/simple2.html:78
+msgid "Here you can manage the settings"
+msgstr "Here you can manage the settings"
+
+#: tamplates/adminapp/pages/tables/simple2.html:83
+msgid "Settings"
+msgstr "Settings"
+
+#: tamplates/adminapp/pages/tables/simple2.html:97
+msgid "List Settings"
+msgstr "List Settings"
+
+#: tamplates/adminapp/pages/tables/simple2.html:100
+msgid "+ New Setting"
+msgstr "+ New Setting"
+
+#: tamplates/adminapp/pages/tables/simple2.html:111
+msgid "Constant"
+msgstr "Constant"
+
+#: tamplates/adminapp/pages/tables/simple2.html:112
+msgid "Value"
+msgstr "Value"
+
+#: tamplates/base.html:10 tamplates/footer.html:4 tamplates/header.html:38
+msgid "AdminLTE"
+msgstr "AdminLTE"
+
+#: tamplates/footer.html:4
+msgid "Copyright &copy; 2014-2019"
+msgstr "Copyright &copy; 2014-2019"
+
+#: tamplates/footer.html:5
+msgid "All rights reserved."
+msgstr "All rights reserved."
+
+#: tamplates/footer.html:7
+msgid "Version"
+msgstr "Version"
+
+#: tamplates/footer.html:7
+msgid "3.0.0-beta.2"
+msgstr "3.0.0-beta.2"
+
+#: tamplates/header.html:20
+msgid "Logout"
+msgstr "Logout"
+
+#: tamplates/header.html:59
+msgid "Admin"
+msgstr "Admin"
+
+#: tamplates/header.html:83
+msgid "CMS Manager"
+msgstr "CMS Manager"
+
+#: tamplates/header.html:91
+msgid "CMS Pages"
+msgstr "CMS Pages"
+
+#: tamplates/header.html:108
+msgid "Logo/Fav icon"
+msgstr "Logo/Fav icon"
+
+#: tamplates/header.html:126
+msgid "Social Links"
+msgstr "Social Links"
+
+#: tamplates/header.html:135
+msgid "USER"
+msgstr "USER"
+
+#: tamplates/header.html:143
+msgid "User List"
+msgstr "User List"
+
+#: tamplates/header.html:154
+msgid "Mailbox"
+msgstr "Mailbox"
+
+#: tamplates/header.html:162
+msgid "Hooks (slugs)"
+msgstr "Hooks (slugs)"
+
+#: tamplates/header.html:168
+msgid "Email Template"
+msgstr "Email Template"
+
+#~ msgid "Hello world!"
+#~ msgstr "Hello world!"
+
+#~ msgid "Hello world I am a translated text"
+#~ msgstr "Hello world I am a translated text 1"

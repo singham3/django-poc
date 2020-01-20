@@ -1,0 +1,325 @@
+
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block styles %}
+<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block scripts %}
+
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"></script>
+
+<script>
+    fieldType();
+    $(function () {
+       $("select[name='field_type']").on("change",function(){
+           fieldType();
+       });
+    });
+    function fieldType(){
+        var _type = $("select[name='field_type']").val();
+        console.log(_type);
+        if(_type=="checkbox"){
+            $(".field-switch-type").show();
+            $(".field-textarea-type").hide();
+            $(".field-switch-type").find("input").attr('name', 'config_value');
+            $(".field-textarea-type").find("textarea").attr('name', 'setting_checkbox');
+        }else{
+            $(".field-textarea-type").show();
+            $(".field-switch-type").hide();
+            $(".field-switch-type").find("input").attr('name', 'setting_checkbox');
+            $(".field-textarea-type").find("textarea").attr('name', 'config_value');
+        }
+    }
+</script>
+
+{% endblock %}
+
+{% block content %}
+{% csrf_token %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+      {% if form.non_field_errors %}
+<!--        <div class="card-body">-->
+                <div class="alert alert-danger alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> {% trans "Alert!" %}</h5>
+                  {{ form.non_field_errors }}
+                </div>
+
+      {% elif form.errors %}
+<!--        <div class="card-body">-->
+                <div class="alert alert-danger alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> {% trans "Alert!" %}</h5>
+                  {{ form.errors }}
+                </div>
+    {% elif error %}
+<!--        <div class="card-body">-->
+                <div class="alert alert-danger alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> {% trans "Alert!" %}</h5>
+                  {{ error }}
+                </div>
+      {% elif msg %}
+                <div class="alert alert-success alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-check"></i> {% trans "Alert!" %}</h5>
+                  {{msg}}
+                </div>
+        {% endif %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>{% trans "Manage Setting" %} <h6>{% trans "Here you can manage the settings" %}</h6></h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/dashboard/" class="text-secondary">{% trans "Home" %}</a></li>
+              <li class="breadcrumb-item active">{% trans "Settings" %}</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-8">
+            <div class="card card-primary card-outline">
+              <div class="card-header" style="display:inline-block">
+                <h3 class="card-title" style="display:inline-block">{% trans "List Settings" %}</h3>
+
+                <div class="float-right" style="display:inline-block">
+                          <a href="/setting-manager/settings/add/"><button type="button" class="btn btn-success">{% trans "+ New Setting" %}</button></a>
+                        </div>
+              </div>
+
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>{% trans "ID" %}</th>
+                      <th>{% trans "Title" %}</th>
+                      <th>{% trans "Constant" %}</th>
+                      <th>{% trans "Value" %}</th>
+                      <th class="text-center">{% trans "Actions" %}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for i in allGS %}
+                    <tr>
+                      <td>{{i.id}}</td>
+                      <td>{{i.title}}</td>
+                      <td>{{i.Constant_Slug}}</td>
+                        {% if i.config_value_text %}
+                      <td>{{i.config_value_text}}</td>
+                        {% else %}
+                        <td>{{i.title}}</td>
+                        {% endif %}
+
+                      <td class="text-right"><div class="margin" >
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-success">{% trans "Action" %}</button>
+                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                      <span class="caret"></span>
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu" role="menu">
+                        <a class="dropdown-item" href="/setting-manager/settings/view/{{i.id}}/">{% trans "View" %}</i></a>
+                        <a class="dropdown-item" href="/setting-manager/settings/edit/{{i.id}}/">{% trans "Edit" %}</i></a>
+                  </div>
+                  </div></div></td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+              <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-end">
+                          {% if allGS.has_previous %}
+                          <li class="page-item"><a class="page-link" href="/setting-manager/settings/{{ allGS.previous_page_number }}/">Previous</a></li>
+                          {% else %}
+                          <li class="page-item" ><a class="page-link">Previous</a></li>
+                          {% endif %}
+                          {% if allGS.paginator.num_pages > 1 %}
+                            {% for i in range %}
+                            <li class="page-item"><a class="page-link" href="/setting-manager/settings/{{ i }}/">{{ i }}</a></li>
+                            {% endfor %}
+                          {% endif %}
+                          {% if allGS.has_next %}
+                          <li class="page-item"><a class="page-link" href="/setting-manager/settings/{{ allGS.next_page_number }}/">Next</a></li>
+                          {% else %}
+                          <li class="page-item"><a class="page-link">Next</a></li>
+                          {% endif %}
+                        </ul>
+                    </nav>
+          </div>
+          <div class="col-md-4">
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <i class="fa fa-exclamation"></i> {% trans "Important Rules" %}
+                    </h3>
+                </div><!-- /.box-header -->
+                <div class="card-body">
+                  <p>
+                        {% trans "For each config settings that would be added to the system, make sure it has these constant/slug:" %}
+                    </p>
+                    <ul>
+                        <li>
+                            <small class="label bg-yellow">
+                                SITE_TITLE
+                            </small> - {% trans "Will be replaced by website title from the admin settings." %}
+                        </li>
+                        <li>
+                            <small class="label bg-yellow">
+                                ADMIN_EMAIL
+                            </small> - {% trans "Will be replaced by admin email from the admin settings." %}
+                        </li>
+                        <li>
+                            <small class="label bg-yellow">
+                                FROM_EMAIL
+                            </small> - {% trans "Will be replaced by email from the admin settings." %}
+                        </li>
+                        <li>
+                            <small class="label bg-yellow">
+                                WEBSITE_OWNER
+                            </small> - {% trans "Will be replaced by Owner name from admin settings." %}
+                        </li>
+                        <li>
+                            <small class="label bg-yellow">
+                                TELEPHONE
+                            </small> - {% trans "Will be replaced by phone number from admin settings." %}
+                        </li>
+                        <li>
+                            <small class="label bg-yellow">
+                                ADMIN_PAGE_LIMIT
+                            </small> - {% trans "Will be replaced by admin page limit from admin settings." %}
+                        </li>
+                        <li>
+                            <small class="label bg-yellow">
+                                FRONT_PAGE_LIMIT
+                            </small> - {% trans "Will be replaced by front page limit from admin settings." %}
+                        </li>
+                        <li>
+                            <small class="label bg-yellow">
+                                ADMIN_DATE_FORMAT
+                            </small> - {% trans "Will be replaced by admin date format from admin settings." %}
+                        </li>
+                        <li>
+                            <small class="label bg-yellow">
+                                ADMIN_DATE_TIME_FORMAT
+                            </small> - {% trans "Will be replaced by admin date time format from admin settings." %}
+                        </li>
+                        <li>
+                            <small class="label bg-yellow">
+                                FRONT_DATE_FORMAT
+                            </small> - {% trans "Will be replaced by front date format from admin settings." %}
+                        </li>
+                        <li>
+                            <small class="label bg-yellow">
+                                FRONT_DATE_TIME_FORMAT
+                            </small> - {% trans "Will be replaced by front date time format from admin settings." %}
+                        </li>
+                        <li>
+                            <small class="label bg-yellow">
+                                CONTACT_US_TEXT
+                            </small> - {% trans "Will be replaced by front date time format from admin settings." %}
+                        </li>
+                        <li>
+                            <small class="label bg-yellow">
+                                GOOGLE_MAP_KEY
+                            </small> - {% trans "Will be replaced by front date time format from admin settings." %}
+                        </li>
+                        <li>
+                            <small class="label bg-yellow">
+                                OFFICE_ADDRESS
+                            </small> - {% trans "Will be replaced by front date time format from admin settings." %}
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+              <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fa fa-anchor"></i> {% trans "Quick Start" %}</h3>
+                    </div>
+                    <form method="post" enctype="multipart/form-data" accept-charset="utf-8" role="form" action="/generalform/">
+                        {% csrf_token %}
+                        <div class="card-body">
+
+
+                           <div class="row">
+                        <div class="form-group col-md-12">
+                    <label for="exampleInputTitle1">{% trans "Title" %}</label>
+                    <input type="text"  class="form-control" required id="exampleInputTitle1" name="title" placeholder="{% trans 'Title' %}">
+                  </div>
+
+                  </div>
+
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                    <label for="exampleInputConstant_Slug1">{% trans "Constant/Slug" %}</label>
+                    <input type="text" required class="form-control" id="exampleInputConstant_Slug1" name="Constant_Slug" placeholder="{% trans 'Constant/Slug' %}">
+                  </div>
+
+                 </div>
+
+                    <div class="row">
+                  <div class="form-group col-md-12">
+                    <div class="input select required"><label for="field-type">{% trans "Field Type" %}</label>
+                        <select name="field_type" class="form-control"  required="required" id="field-type">
+                            <option value="text" selected>{% trans "Text" %}</option>
+                            <option value="checkbox">{% trans "Yes/No" %}</option>
+                        </select></div>
+                  </div>
+
+
+                         </div>
+                  <div class="row">
+                  <div class="form-group col-md-12 field-switch-type" style="display: none">
+
+                                            <div class="checkbox">
+                                            <input type="checkbox" checked data-toggle="toggle" data-size="sm">
+                                            </div>
+
+
+                  </div>
+                       <div class="form-group col-md-12">
+                      <div class="form-group field-textarea-type" style="">
+                                <div class="input textarea"><label for="setting_textarea">{% trans "Config Value" %}</label>
+                                    <textarea name="config_value" class="form-control" id="setting_textarea" placeholder="{% trans 'Config Value' %}" rows="5">
+                                    </textarea></div>                            </div>
+                  </div>
+                     </div>
+
+
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+                </div>
+
+                    </form>
+              </div>
+          </div>
+        </div>
+
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+{% endblock %}

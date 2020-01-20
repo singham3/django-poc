@@ -1,0 +1,137 @@
+
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block styles %}
+{% endblock %}
+{% block scripts %}
+{% endblock %}
+{% block content %}
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    {% if error %}
+<!--        <div class="card-body">-->
+                <div class="alert alert-danger alert-dismissible col-md-12" >
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> {% trans "Alert!" %}</h5>
+                  {{ error }}
+                </div>
+    {% elif msg %}
+                <div class="alert alert-success alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-check"></i> {% trans "Alert!" %}</h5>
+                  {{msg}}
+                </div>
+    {% endif %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>{% trans "Manage Page" %}</h1><h6>{% trans "Here you can manage the pages" %}</h6>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/dashboard/" class="text-secondary">{% trans "Home" %}</a></li>
+              <li class="breadcrumb-item active">{% trans "Pages" %}</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+
+        <!-- /.row -->
+        <div class="row">
+          <div class="col-12">
+            <div class="card card-primary card-outline">
+              <div class="card-header" style="display:inline-block">
+                <h3 class="card-title" style="display:inline-block">{% trans "List Pages" %}</h3>
+
+
+                <div class="float-right" style="display:inline-block">
+                          <a href="/cms-manager/pages/add/"><button type="button" class="btn btn-success">{% trans "+ New Page" %}</button></a>
+                        </div>
+              </div>
+
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>{% trans "ID" %}</th>
+                      <th>{% trans "Title" %}</th>
+                      <th>{% trans "Slug" %}</th>
+                      <th>{% trans "Short Description" %}</th>
+                      <th>{% trans "Created" %}</th>
+                      <th>{% trans "Actions" %}</th>
+                    </tr>
+                  </thead>
+                  {% for i in cmsdata %}
+                    <tbody>
+                      <tr>
+                        <td>{{i.id}}</td>
+                        <td>{{i.title}}</td>
+                        <td>{{i.slug}}</td>
+                        <td><span class="tag tag-success">{{i.short_description}}</span></td>
+                        <td>{{i.createdate | date:'m/d/Y P'}}</td>
+                        <td><div class="margin">
+
+                    <div class="btn-group">
+
+                      <button type="button" class="btn btn-success">{% trans "Action" %}</button>
+                      <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                      </button>
+                      <div class="dropdown-menu" role="menu">
+                          <a class="dropdown-item" href="/cms-manager/pages/view/{{i.id}}">{% trans "View" %}</i></a>
+                          <a class="dropdown-item" href="/cms-manager/pages/edit/{{i.id}}">{% trans "Edit" %}</i></a>
+                          <a class="dropdown-item" href="/cms-manager/pages/delete/{{i.id}}">{% trans "Delete" %}</i></a>
+                    </div>
+                    </div></div></td>
+                      </tr>
+
+                    </tbody>
+                    {% endfor %}
+
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                  {% if cmsdata.has_previous %}
+                  <li class="page-item"><a class="page-link" href="/cms-manager/pages/{{ cmsdata.previous_page_number }}/">Previous</a></li>
+                  {% else %}
+                  <li class="page-item"><a class="page-link">Previous</a></li>
+                  {% endif %}
+                  {% if cmsdata.paginator.num_pages > 1 %}
+                    {% for i in range %}
+                    <li class="page-item"><a class="page-link" href="/cms-manager/pages/{{ i }}/">{{ i }}</a></li>
+                    {% endfor %}
+                  {% endif %}
+                  {% if cmsdata.has_next %}
+                  <li class="page-item"><a class="page-link" href="/cms-manager/pages/{{ cmsdata.next_page_number }}/">Next</a></li>
+                  {% else %}
+                  <li class="page-item"><a class="page-link">Next</a></li>
+                  {% endif %}
+                </ul>
+              </nav>
+          </div>
+
+        </div>
+
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+{% endblock %}

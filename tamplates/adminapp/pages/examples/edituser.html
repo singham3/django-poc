@@ -1,0 +1,175 @@
+
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block styles %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+{% endblock %}
+
+{% block scripts %}
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+
+<script>
+	$(document).ready(function(){
+		var date_input=$('input[name="date"]'); //our date input has the name "date"
+		var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+		date_input.datepicker({
+			format: 'mm/dd/yyyy',
+			container: container,
+			todayHighlight: true,
+			autoclose: true,
+		})
+	})
+</script>
+{% endblock %}
+
+{% block content %}
+  <!-- Content Wrapper. Contains page content -->
+
+
+  <div class="content-wrapper">
+      {% if form.non_field_errors %}
+<!--        <div class="card-body">-->
+                <div class="alert alert-danger alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> {% trans "Alert!" %}</h5>
+                  {{ form.non_field_errors }}
+                </div>
+
+      {% elif form.errors %}
+<!--        <div class="card-body">-->
+                <div class="alert alert-danger alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> {% trans "Alert!" %}</h5>
+                  {{ form.errors }}
+                </div>
+    {% elif error %}
+<!--        <div class="card-body">-->
+                <div class="alert alert-danger alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> {% trans "Alert!" %}</h5>
+                  {{ error }}
+                </div>
+      {% elif msg %}
+                <div class="alert alert-success alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-check"></i> {% trans "Alert!" %}</h5>
+                  {{msg}}
+                </div>
+        {% endif %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>General Form</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/dashboard/" class="text-secondary">{% trans "Home" %}</a></li>
+                <li class="breadcrumb-item"><a href="/users/pages/" class="text-secondary">{% trans "Admin user" %}</a></li>
+              <li class="breadcrumb-item active">{% trans "Edit User" %}</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-6" style="flex: 0 0 100%;max-width: 100%;">
+            <!-- general form elements -->
+            <div class="card card-primary card-outline">
+              <div class="card-header">
+                <h3 class="card-title" style="display:inline-block;">{% trans "Quick Example" %}</h3>
+                   <a href="/users/pages/" class="btn btn-default float-right" style="display:inline-block;" title="Back"><i class="fa fa-fw fa-chevron-circle-left"></i> {% trans "Back" %}</a>
+
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" action="/users/pages/edit/{{edit_data.account_id}}/" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                <div class="card-body">
+                    <div class="row">
+                    <div class="form-group col-md-6">
+                    <label for="exampleInputUsername1">{% trans "Username" %}</label>
+                    <input type="text"  class="form-control" id="exampleInputUsername1" readonly name="username" value="{{edit_data.username}}">
+                  </div>
+                        <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">{% trans "Email address" %}</label>
+                    <input type="email"  class="form-control" id="exampleInputEmail1" name="email" readonly value="{{edit_data.email}}">
+                  </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">{% trans "First Name" %}</label>
+                    <input type="text"  class="form-control" id="exampleInputFirstName1" name="first_name" value="{{edit_data.first_name}}">
+                  </div>
+                        <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">{% trans "Last Name" %}</label>
+                    <input type="text"  class="form-control" id="exampleInputLastName1" name="last_name" value="{{edit_data.last_name}}">
+                  </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                        <div class="bootstrap-iso">
+                            <label for="date">{% trans "Date Of Birth" %}</label>
+                            <div class="input-group">
+                                  <input class="form-control" id="date"  name="date" value="{{edit_data.dateofbirth | date:'m/d/Y'}}" type="text"/>
+                              </div>
+                        </div>
+                        </div>
+                        <div class="form-group col-md-6" >
+                            <label for="exampleInputEmail1">{% trans "Mobile" %}</label>
+                            <input type="text"  class="form-control" id="exampleInputMobile" name="mobile"  value="{{edit_data.mobile}}">
+                        </div>
+                     </div>
+                    <div class="row">
+                  <div class="form-group col-md-6">
+                      <label for="status">{% trans "Status" %}</label>
+                      <select name="status" class="form-control" id="status">
+                          {% if edit_data.is_active == 1 %}
+                              <option value="1" selected>{% trans "Active" %}</option>
+                              <option value="0">{% trans "Inactive" %}</option>
+                          {% elif edit_data.is_active == 0 %}
+                                <option value="1">{% trans "Active" %}</option>
+                              <option value="0" selected>{% trans "Inactive" %}</option>
+                          {% endif %}
+                      </select>
+                  </div>
+                            <div class="form-group col-md-6">
+                    <label for="exampleInputFile">{% trans "File input" %}</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+
+                        <input type="file" name="userimg" value={{edit_data.userimg.url}}  class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">{% trans "Choose file" %}</label>
+                      </div>
+                    </div>
+                  </div>
+
+                    <div class="form-group col-md-6" >
+                    <input type="hidden"  class="form-control" id="exampleInputPatientUniqueId" name="account_id" readonly value="{{edit_data.account_id}}">
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+                </div>
+                </div>
+              </form>
+            </div>
+
+        </div>
+
+        </div></div>
+    </section>
+
+  </div>
+
+{% endblock %}

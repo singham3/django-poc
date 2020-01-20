@@ -1,0 +1,6 @@
+{
+  "subject": "##USER_NAME##, a very warm welcome to the ##SYSTEM_APPLICATION_NAME##",
+  "ckeditor": "We’re so happy to have you with us.\n\nPlease click on the button below to confirm we got the right email address.\n\nVERIFY MY EMAIL\n\nOr copy and paste the link below.\n\n##verify_n_password##\n\n##USER_INFO##",
+  "footer_text":"<strong>Thanks and Regards,</strong><p>##SYSTEM_APPLICATION_NAME##</p>",
+  "email_preference": "Main Email Layout"
+}

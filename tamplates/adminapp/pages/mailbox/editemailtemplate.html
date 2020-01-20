@@ -1,0 +1,311 @@
+
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %} ">
+<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css" rel="stylesheet">
+{% endblock %}
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"></script>
+<script src="{% static 'ckeditor/ckeditor.js' %}"></script>
+<script src="{% static 'plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js' %}"></script>
+<script>
+  $(function () {
+    //Enable check and uncheck all functionality
+    $('.checkbox-toggle').click(function () {
+      var clicks = $(this).data('clicks')
+      if (clicks) {
+        //Uncheck all checkboxes
+        $('.mailbox-messages input[type=\'checkbox\']').prop('checked', false)
+        $('.checkbox-toggle .far.fa-check-square').removeClass('fa-check-square').addClass('fa-square')
+      } else {
+        //Check all checkboxes
+        $('.mailbox-messages input[type=\'checkbox\']').prop('checked', true)
+        $('.checkbox-toggle .far.fa-square').removeClass('fa-square').addClass('fa-check-square')
+      }
+      $(this).data('clicks', !clicks)
+    })
+
+    //Handle starring for glyphicon and font awesome
+    $('.mailbox-star').click(function (e) {
+      e.preventDefault()
+      //detect type
+      var $this = $(this).find('a > i')
+      var glyph = $this.hasClass('glyphicon')
+      var fa    = $this.hasClass('fa')
+
+      //Switch states
+      if (glyph) {
+        $this.toggleClass('glyphicon-star')
+        $this.toggleClass('glyphicon-star-empty')
+      }
+
+      if (fa) {
+        $this.toggleClass('fa-star')
+        $this.toggleClass('fa-star-o')
+      }
+    })
+  })
+</script>
+<script>
+  $(function () {
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.replace('editor1')
+    //bootstrap WYSIHTML5 - text editor
+    $('.textarea').wysihtml5()
+  })
+</script>
+<script src="{% static 'dist/js/demo.js' %}"></script>
+
+{% endblock %}
+
+{% block content %}
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+      {% if form.non_field_errors %}
+<!--        <div class="card-body">-->
+                <div class="alert alert-danger alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> {% trans "Alert!" %}</h5>
+                  {{ form.non_field_errors }}
+                </div>
+
+      {% elif form.errors %}
+<!--        <div class="card-body">-->
+                <div class="alert alert-danger alert-dismissible col-md-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> {% trans "Alert!" %}</h5>
+                  {{ form.errors }}
+                </div>
+
+      {% elif error %}
+    <!--        <div class="card-body">-->
+            <div class="alert alert-danger alert-dismissible col-md-12">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <h5><i class="icon fas fa-ban"></i> {% trans "Alert!" %}</h5>
+              {{ error }}
+            </div>
+      {% elif msg %}
+
+            <div class="alert alert-success alert-dismissible col-md-12">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <h5><i class="icon fas fa-check"></i> {% trans "Alert!" %}</h5>
+              {{msg}}
+            </div>
+
+      {% endif %}
+      <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>{% trans "Manage Email Template" %} <h6>{% trans "Add New email template" %} </h6></h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/dashboard/" class="text-secondary">{% trans "Home" %}</a></li>
+                <li class="breadcrumb-item"><a href="/email-manager/email-templates/" class="text-secondary">{% trans "Email templates" %}</a></li>
+              <li class="breadcrumb-item active">{% trans "Edit Email template" %}</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+      <section class="content">
+      <div class="row">
+        <div class="col-md-8">
+            <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title" style="display:inline-block;">{% trans "Add Email Template" %}</h3>
+                                    <a href="/email-manager/email-templates/" class="btn btn-default float-right" style="display:inline-block;" title="Back"><i class="fa fa-fw fa-chevron-circle-left"></i> {% trans "Back" %}</a>
+
+                    </div>
+                    <form method="post" enctype="multipart/form-data" accept-charset="utf-8" role="form" action="/email-manager/email-templates/edit/{{tempemaildata.id}}/">
+                        {% csrf_token %}
+                        <div class="card-body">
+                            {% if tempemaildata %}
+                            <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="emailhooks">{% trans "Email Hook" %}</label>
+                                <select name="emailhooks" class="form-control" id="emailhooks">
+                                    {% for eh in allemailhooks %}
+                                    {% if tempemaildata.emailhooks.title ==  eh.title %}
+                                        <option value="{{eh.title}}" selected>{{eh.title}}</option>
+                                    {% else %}
+                                    <option value="{{eh.title}}">{{eh.title}}</option>
+                                    {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                          </div>
+                            <div class="row">
+                              <div class="form-group col-md-12">
+                                <label for="subject">{% trans "Subject" %}</label>
+                                <input type="text"  class="form-control" id="subject" required name="subject" value="{{tempemaildata.subject}}">
+                              </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <div class="box box-info">
+                                    <div class="box-body pad">
+                                        <textarea id="editor1" name="ckeditor" rows="10" cols="80">
+                                          {{tempemaildata.ckeditor | safe}}
+                                        </textarea>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                              <div class="form-group col-md-12">
+                                <label for="footer_text">{% trans "Footer Text" %}</label>
+                                  <textarea class="form-control" id="footer_text" required name="footer_text" placeholder="Footer Text">{{tempemaildata.footer_text}}</textarea>
+                              </div>
+                            </div>
+                            <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="email_preference">{% trans "Email Preference" %}</label>
+                                <select name="email_preference" class="form-control" id="email_preference">
+                                    <option value="Main Email Layout">{% trans "Main Email Layout" %}</option>
+
+                                </select>
+                            </div>
+                          </div>
+                            <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="status">{% trans "Status" %}</label>
+                                <select name="status" class="form-control" id="status">
+                                    {% if tempemaildata.status == 1 or tempemaildata.status == True %}
+                                    <option value="1" selected>{% trans "Active" %}</option>
+                                    <option value="0">{% trans "Inactive" %}</option>
+                                    {% else %}
+                                    <option value="1">{% trans "Active" %}</option>
+                                    <option value="0" selected>{% trans "Inactive" %}</option>
+                                    {% endif %}
+                                </select>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="form-group">
+                              <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+                              </div>
+                            </div>
+                          </div>
+                            {% endif %}
+                        </div>
+                    </form>
+
+            </div>
+        </div>
+           <div class="col-md-4">
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <i class="fa fa-exclamation"></i> {% trans "Important Rules" %}
+                    </h3>
+                </div><!-- /.box-header -->
+            <div class="card-body">
+                <p>{% trans "For each email hook that would be added to the sytem, make sure to follow these rules:" %}</p>
+                    <ul>
+                        <li>
+                            {% trans "Use" %} <small class="label bg-yellow">##SYSTEM_APPLICATION_NAME##</small>
+                            {% trans "on the subject or message to print application name defined by admin settings." %}
+                        </li>
+                        <li>
+                            {% trans "Use" %} <small class="label bg-yellow">##USER_EMAIL##</small>
+                            {% trans "on the subject or message to print user email." %}
+                        </li>
+                        <li>
+                            {% trans "Use" %} <small class="label bg-yellow">##USER_NAME##</small>
+                            {% trans "on the subject or message to print user name." %}
+                        </li>
+                        <li>{% trans "Make sure the message contain" %} <small class="label bg-yellow">##MESSAGE##</small>.</li>
+                    </ul>
+
+            </div>
+          </div>
+               <div class="card card-primary card-outline">
+                   <div class="card-body">
+                <div class="tab-content">
+            <div class="card-body p-0">
+
+              <div class="tab-pane" id="timeline">
+
+                    <!-- The timeline -->
+
+                    <ul class="timeline timeline-inverse">
+                      <!-- timeline time label -->
+                        {% for i in emailtamps %}
+                      <li class="time-label">
+                        <span class="bg-primary">
+                          {{i.createdat|date:"D d M Y"}}
+                        </span>
+                      </li>
+                      <!-- /.timeline-label -->
+                      <!-- timeline item -->
+                      <li>
+                        <i class="fa fa-anchor bg-primary"></i>
+
+                        <div class="timeline-item col-sm-10">
+                          <span class="time"><i class="far fa-clock"></i> {{i.createdat|time:"h:i"}}</span>
+
+                          <h3 class="timeline-header"><a href="/email-manager/email-hooks/view/{{i.emailhooks.id}}/">{{i.emailhooks.title}}</a></h3>
+                            {% if mellist %}
+                            <div class="timeline-body">
+                            <a href="/email-template/email-preferences/view/{{mellist.id}}/">{{mellist.title}}</a>
+                          </div>
+                            {% endif %}
+                          <div class="timeline-body">
+                            {{i.subject}}
+                          </div>
+                          <div class="timeline-footer">
+<!--                            <input type="checkbox" checked data-toggle="toggle" data-size="sm">-->
+                            <a href="/email-manager/email-templates/view/{{i.id}}/"  class="btn btn-default btn-sm" data-toggle="tooltip" alt="View hook" title="" data-original-title="View hook"><i class="fa fa-eye"></i></a>
+
+                            <a href="/email-manager/email-templates/edit/{{i.id}}/"  class="btn btn-primary btn-sm" data-toggle="tooltip" alt="Read hook" title="" data-original-title="Read hook"><i class="fa fa-edit"></i></a>
+
+                            <a href="/email-manager/email-templates/delete/{{i.id}}/"  class="btn btn-danger btn-sm" data-toggle="tooltip" alt="Delete hook" title="" data-original-title="Delete hook"><i class="fa fa-trash"></i></a>
+                          </div>
+                        </div>
+                      </li>
+                        {% endfor %}
+
+                      <li>
+                        <i class="far fa-clock bg-gray"></i>
+                      </li>
+                    </ul>
+
+                  </div>
+              <!-- /.mail-box-messages -->
+            </div>
+                </div></div>
+               </div>
+               <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                  {% if emailtamps.has_previous %}
+                  <li class="page-item"><a class="page-link" href="/email-manager/email-templates/edit/{{tempemaildata.id}}/{{ emailtamps.previous_page_number }}/">Previous</a></li>
+                  {% else %}
+                  <li class="page-item" ><a class="page-link">Previous</a></li>
+                  {% endif %}
+                  {% if emailtamps.paginator.num_pages > 1 %}
+                    {% for i in range %}
+                    <li class="page-item"><a class="page-link" href="/email-manager/email-templates/edit/{{tempemaildata.id}}/{{ i }}/">{{ i }}</a></li>
+                    {% endfor %}
+                  {% endif %}
+                  {% if emailtamps.has_next %}
+                  <li class="page-item"><a class="page-link" href="/email-manager/email-templates/edit/{{tempemaildata.id}}/{{ emailtamps.next_page_number }}/">Next</a></li>
+                  {% else %}
+                  <li class="page-item"><a class="page-link">Next</a></li>
+                  {% endif %}
+                </ul>
+              </nav>
+           </div>
+      </div>
+      </section>
+
+</div>
+{% endblock %}
